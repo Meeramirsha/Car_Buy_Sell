@@ -1,0 +1,8 @@
+# Ignore frontend build & modules
+car/node_modules/
+car/dist/
+
+# Ignore backend build & IDE files
+carbackend/target/
+carbackend/.idea/
+carbackend/*.iml
