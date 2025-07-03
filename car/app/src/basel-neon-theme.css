@@ -1,0 +1,449 @@
+/* Basel Neon Animated Theme - Technical Edition */
+
+:root {
+  /* Neon color palette */
+  --neon-primary: #00f3ff;
+  --neon-secondary: #ff00e6;
+  --neon-accent: #00ff8f;
+  --neon-warning: #ffcc00;
+  --neon-danger: #ff3366;
+  --neon-info: #00ccff;
+  --neon-success: #00ff99;
+  
+  /* Dark backgrounds */
+  --dark-bg-primary: #0a0a14;
+  --dark-bg-secondary: #121225;
+  --dark-bg-tertiary: #1a1a2e;
+  
+  /* Glow effects */
+  --glow-spread-primary: 5px;
+  --glow-spread-secondary: 8px;
+  --glow-opacity: 0.7;
+}
+
+/* Body and general styles */
+body {
+  background-color: var(--dark-bg-primary);
+  color: #ffffff;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+/* Neon text effects */
+.neon-text-primary {
+  color: var(--neon-primary);
+  text-shadow: 0 0 5px var(--neon-primary), 
+               0 0 10px var(--neon-primary), 
+               0 0 20px var(--neon-primary);
+}
+
+.neon-text-secondary {
+  color: var(--neon-secondary);
+  text-shadow: 0 0 5px var(--neon-secondary), 
+               0 0 10px var(--neon-secondary), 
+               0 0 20px var(--neon-secondary);
+}
+
+.neon-text-accent {
+  color: var(--neon-accent);
+  text-shadow: 0 0 5px var(--neon-accent), 
+               0 0 10px var(--neon-accent), 
+               0 0 20px var(--neon-accent);
+}
+
+/* Headings with neon effect */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+h1.display-4, h2.display-5 {
+  color: var(--neon-primary);
+  text-shadow: 0 0 5px var(--neon-primary), 
+               0 0 10px var(--neon-primary);
+  transition: text-shadow 0.3s ease;
+}
+
+h1.display-4:hover, h2.display-5:hover {
+  text-shadow: 0 0 8px var(--neon-primary), 
+               0 0 15px var(--neon-primary), 
+               0 0 25px var(--neon-primary);
+}
+
+/* Buttons with neon glow */
+.btn-primary {
+  background-color: transparent;
+  color: var(--neon-primary);
+  border: 1px solid var(--neon-primary);
+  box-shadow: 0 0 5px var(--neon-primary);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: rgba(0, 243, 255, 0.1);
+  color: white;
+  box-shadow: 0 0 10px var(--neon-primary), 
+              0 0 20px var(--neon-primary);
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background-color: transparent;
+  color: var(--neon-success);
+  border: 1px solid var(--neon-success);
+  box-shadow: 0 0 5px var(--neon-success);
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover, .btn-success:focus {
+  background-color: rgba(0, 255, 153, 0.1);
+  color: white;
+  box-shadow: 0 0 10px var(--neon-success), 
+              0 0 20px var(--neon-success);
+  transform: translateY(-2px);
+}
+
+.btn-warning {
+  background-color: transparent;
+  color: var(--neon-warning);
+  border: 1px solid var(--neon-warning);
+  box-shadow: 0 0 5px var(--neon-warning);
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover, .btn-warning:focus {
+  background-color: rgba(255, 204, 0, 0.1);
+  color: white;
+  box-shadow: 0 0 10px var(--neon-warning), 
+              0 0 20px var(--neon-warning);
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background-color: transparent;
+  color: var(--neon-danger);
+  border: 1px solid var(--neon-danger);
+  box-shadow: 0 0 5px var(--neon-danger);
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover, .btn-danger:focus {
+  background-color: rgba(255, 51, 102, 0.1);
+  color: white;
+  box-shadow: 0 0 10px var(--neon-danger), 
+              0 0 20px var(--neon-danger);
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+  color: var(--neon-primary);
+  border-color: var(--neon-primary);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: transparent;
+  color: white;
+  border-color: var(--neon-primary);
+  box-shadow: 0 0 10px var(--neon-primary);
+}
+
+.btn-outline-success {
+  color: var(--neon-success);
+  border-color: var(--neon-success);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-success:hover {
+  background-color: transparent;
+  color: white;
+  border-color: var(--neon-success);
+  box-shadow: 0 0 10px var(--neon-success);
+}
+
+/* Cards with neon borders */
+.card {
+  background-color: #fff !important;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.hover-card {
+  position: relative;
+}
+
+.hover-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  padding: 2px;
+  background: linear-gradient(45deg, var(--neon-primary), var(--neon-secondary), var(--neon-accent));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.hover-card:hover::before {
+  opacity: 1;
+}
+
+.hover-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-body {
+  padding: 1.5rem;
+  color: #333 !important;
+  opacity: 1 !important;
+}
+
+.card-text {
+  color: #333 !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+.card-title {
+  color: #333 !important;
+  font-weight: 600;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+/* Carousel customization */
+.carousel-item {
+  position: relative;
+}
+
+.carousel-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, var(--dark-bg-primary) 0%, transparent 100%);
+}
+
+.carousel-caption {
+  background-color: rgba(10, 10, 20, 0.7);
+  border: 1px solid var(--neon-primary);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+  z-index: 2;
+}
+
+/* Icon circles with neon glow */
+.icon-circle {
+  border: 1px solid currentColor;
+  box-shadow: 0 0 10px currentColor;
+  transition: all 0.3s ease;
+}
+
+.icon-circle:hover {
+  box-shadow: 0 0 20px currentColor;
+  transform: scale(1.05);
+}
+
+/* Badge styling */
+.badge {
+  font-weight: 500;
+  padding: 0.5em 0.8em;
+  border-radius: 4px;
+}
+
+.bg-primary {
+  background-color: var(--neon-primary) !important;
+  color: var(--dark-bg-primary);
+  box-shadow: 0 0 8px var(--neon-primary);
+}
+
+.bg-success {
+  background-color: var(--neon-success) !important;
+  color: var(--dark-bg-primary);
+  box-shadow: 0 0 8px var(--neon-success);
+}
+
+.bg-warning {
+  background-color: var(--neon-warning) !important;
+  color: var(--dark-bg-primary);
+  box-shadow: 0 0 8px var(--neon-warning);
+}
+
+.bg-danger {
+  background-color: var(--neon-danger) !important;
+  color: var(--dark-bg-primary);
+  box-shadow: 0 0 8px var(--neon-danger);
+}
+
+.bg-info {
+  background-color: var(--neon-info) !important;
+  color: var(--dark-bg-primary);
+  box-shadow: 0 0 8px var(--neon-info);
+}
+
+.bg-light {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white;
+}
+
+/* Animated elements */
+@keyframes neon-pulse {
+  0% {
+    opacity: 0.7;
+    box-shadow: 0 0 5px currentColor;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px currentColor;
+  }
+  100% {
+    opacity: 0.7;
+    box-shadow: 0 0 5px currentColor;
+  }
+}
+
+.neon-pulse {
+  animation: neon-pulse 2s infinite;
+}
+
+/* Technical data display */
+.tech-data {
+  background-color: var(--dark-bg-tertiary);
+  border-left: 3px solid var(--neon-info);
+  padding: 1rem;
+  margin: 1rem 0;
+  font-family: 'Courier New', monospace;
+}
+
+.tech-data-header {
+  color: var(--neon-info);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Car image styling */
+.car-img {
+  height: 200px;
+  object-fit: cover;
+  transition: all 0.3s ease;
+  filter: brightness(0.9);
+}
+
+.hover-card:hover .car-img {
+  filter: brightness(1.1);
+}
+
+/* Testimonial cards */
+.testimonial-card {
+  background-color: var(--dark-bg-tertiary);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
+
+/* Star ratings */
+.bi-star-fill.text-warning {
+  color: var(--neon-warning) !important;
+  text-shadow: 0 0 5px var(--neon-warning);
+}
+
+/* Footer styling */
+footer {
+  background-color: var(--dark-bg-tertiary);
+  border-top: 1px solid var(--neon-primary);
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Animated background for special sections */
+.tech-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, var(--dark-bg-primary) 21px, transparent 1%) center,
+    linear-gradient(var(--dark-bg-primary) 21px, transparent 1%) center,
+    rgba(0, 243, 255, 0.1);
+  background-size: 22px 22px;
+  z-index: -1;
+}
+
+/* Animations for page elements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 1; /* Ensure elements are fully opaque after animation */
+}
+
+/* Delay animations for sequential elements */
+.delay-1 { 
+  animation-delay: 0.1s; 
+  opacity: 1; /* Ensure elements are fully opaque after animation */
+}
+.delay-2 { 
+  animation-delay: 0.2s; 
+  opacity: 1; /* Ensure elements are fully opaque after animation */
+}
+.delay-3 { 
+  animation-delay: 0.3s; 
+  opacity: 1; /* Ensure elements are fully opaque after animation */
+}
+.delay-4 { 
+  animation-delay: 0.4s; 
+  opacity: 1; /* Ensure elements are fully opaque after animation */
+}
+.delay-5 { 
+  animation-delay: 0.5s; 
+  opacity: 1; /* Ensure elements are fully opaque after animation */
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .carousel-caption {
+    padding: 10px;
+  }
+  
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+  }
+  
+  h1.display-4 {
+    font-size: 2.5rem;
+  }
+  
+  h2.display-5 {
+    font-size: 2rem;
+  }
+}

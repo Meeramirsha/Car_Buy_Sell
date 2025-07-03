@@ -1,0 +1,118 @@
+/* Styles for the sell component */
+
+.car-image-preview {
+  max-height: 150px;
+}
+
+/* Car image thumbnail style */
+.car-thumbnail {
+  max-height: 150px;
+}
+
+/* Car preview image style */
+.car-preview-img {
+  max-height: 150px;
+}
+
+/* Feature remove icon style */
+.feature-remove-icon {
+  cursor: pointer;
+}
+
+/* Override neon text effects for better readability */
+.sell-container {
+  /* Override the body background for this component */
+  background-color: #ffffff !important;
+  color: #333 !important;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.sell-container h2, 
+.sell-container h3, 
+.sell-container h4, 
+.sell-container p, 
+.sell-container label, 
+.sell-container .form-text {
+  /* Override neon text effects */
+  color: #333 !important;
+  text-shadow: none !important;
+  font-weight: normal !important;
+}
+
+.sell-container h2.text-primary {
+  color: #007bff !important;
+  font-weight: bold !important;
+  text-shadow: none !important;
+}
+
+.sell-container .text-muted {
+  color: #6c757d !important;
+}
+
+.sell-container .card {
+  background-color: #fff !important;
+  border: 1px solid #ddd !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.sell-container .btn-success {
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+  color: white !important;
+  box-shadow: none !important;
+}
+
+.sell-container .btn-success:hover {
+  background-color: #218838 !important;
+  border-color: #1e7e34 !important;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5) !important;
+}
+
+.sell-container .btn-outline-secondary, 
+.sell-container .btn-outline-primary {
+  color: #6c757d !important;
+  border-color: #6c757d !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.sell-container .btn-outline-secondary:hover, 
+.sell-container .btn-outline-primary:hover {
+  color: #fff !important;
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+}
+
+.sell-container .alert-success {
+  color: #155724 !important;
+  background-color: #d4edda !important;
+  border-color: #c3e6cb !important;
+}
+
+/* Make form elements more visible */
+.sell-container .form-control, 
+.sell-container .form-select {
+  background-color: #fff !important;
+  color: #333 !important;
+  border: 1px solid #ced4da !important;
+}
+
+.sell-container .form-control:focus, 
+.sell-container .form-select:focus {
+  border-color: #80bdff !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+}
+
+/* Badge styling */
+.sell-container .badge {
+  background-color: #007bff !important;
+  color: white !important;
+  box-shadow: none !important;
+}
+
+/* Override body background for the sell page */
+body {
+  background-color: #f8f9fa !important;
+}

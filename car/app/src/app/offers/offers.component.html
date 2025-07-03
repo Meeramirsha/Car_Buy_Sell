@@ -1,0 +1,74 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+
+      
+      <h2 class="mb-4">Special Offers</h2>
+      
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h3 class="mb-0">Current Promotions</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h4 class="card-title">Summer Sale</h4>
+                  <p class="card-text">Get up to 15% off on selected vehicles until the end of the month.</p>
+                  <a class="btn btn-outline-primary" [routerLink]="['/offers/details']" [queryParams]="{offer: 'summer-sale'}">View Details</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h4 class="card-title">First-Time Buyer</h4>
+                  <p class="card-text">Special financing options available for first-time car buyers.</p>
+                  <a class="btn btn-outline-primary" [routerLink]="['/offers/details']" [queryParams]="{offer: 'first-time-buyer'}">View Details</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h4 class="card-title">Trade-In Bonus</h4>
+                  <p class="card-text">Get an extra $1,000 when you trade in your old vehicle.</p>
+                  <a class="btn btn-outline-primary" [routerLink]="['/offers/details']" [queryParams]="{offer: 'trade-in-bonus'}">View Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header bg-success text-white">
+          <h3 class="mb-0">Featured Deals</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h4 class="card-title">2023 Models Clearance</h4>
+                  <p class="card-text">We're making room for new inventory! Get incredible savings on all remaining 2023 models.</p>
+                  <a class="btn btn-outline-success" routerLink="/cars">Browse Deals</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h4 class="card-title">0% Financing</h4>
+                  <p class="card-text">Qualified buyers can get 0% APR financing for up to 60 months on select models.</p>
+                  <a class="btn btn-outline-success" routerLink="/financing">Check Eligibility</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

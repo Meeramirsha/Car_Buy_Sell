@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>{{ offerDetails.title }}</h2>
+        <button class="btn btn-outline-primary" (click)="goBack()">Back to Offers</button>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h3 class="mb-0">Offer Details</h3>
+        </div>
+        <div class="card-body">
+          <p class="lead">{{ offerDetails.description }}</p>
+          
+          <div class="mt-4">
+            <h4>Details</h4>
+            <p>{{ offerDetails.details }}</p>
+          </div>
+
+          <!-- Summer Sale specific content -->
+          <div *ngIf="offerType === 'summer-sale'" class="mt-4">
+            <h4>Offer Validity</h4>
+            <p>Valid until: {{ offerDetails.validUntil }}</p>
+            
+            <h4>Terms and Conditions</h4>
+            <p>{{ offerDetails.termsAndConditions }}</p>
+            
+            <div class="alert alert-info mt-3">
+              <strong>Limited Time Offer!</strong> Don't miss out on these incredible savings.
+            </div>
+          </div>
+
+          <!-- First-Time Buyer specific content -->
+          <div *ngIf="offerType === 'first-time-buyer'" class="mt-4">
+            <h4>Program Benefits</h4>
+            <ul class="list-group mb-3">
+              <li class="list-group-item" *ngFor="let benefit of offerDetails.benefits">{{ benefit }}</li>
+            </ul>
+            
+            <h4>Requirements</h4>
+            <p>{{ offerDetails.requirements }}</p>
+            
+            <div class="alert alert-success mt-3">
+              <strong>Start Building Credit!</strong> This program is designed to help you establish a positive credit history.
+            </div>
+          </div>
+
+          <!-- Trade-In Bonus specific content -->
+          <div *ngIf="offerType === 'trade-in-bonus'" class="mt-4">
+            <h4>Eligibility</h4>
+            <p>{{ offerDetails.eligibility }}</p>
+            
+            <h4>Offer Validity</h4>
+            <p>Valid until: {{ offerDetails.validUntil }}</p>
+            
+            <div class="alert alert-warning mt-3">
+              <strong>Upgrade Your Ride!</strong> Trade in your current vehicle and drive home in something new.
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <h4>Interested?</h4>
+            <p>Contact our sales team for more information or to take advantage of this offer.</p>
+            <div class="d-flex gap-2">
+              <button class="btn btn-success">Call Us</button>
+              <button class="btn btn-primary">Email Us</button>
+              <button class="btn btn-info">Schedule a Visit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

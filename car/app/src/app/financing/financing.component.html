@@ -1,0 +1,69 @@
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white">
+          <h2 class="mb-0">Car Financing Calculator</h2>
+        </div>
+        <div class="card-body">
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="carPrice" class="form-label">Car Price ($)</label>
+                <input type="number" class="form-control" id="carPrice" [(ngModel)]="carPrice" min="0">
+              </div>
+              <div class="form-group mb-3">
+                <label for="downPayment" class="form-label">Down Payment ($)</label>
+                <input type="number" class="form-control" id="downPayment" [(ngModel)]="downPayment" min="0">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="loanTerm" class="form-label">Loan Term (months)</label>
+                <select class="form-select" id="loanTerm" [(ngModel)]="loanTerm">
+                  <option [ngValue]="36">36 months (3 years)</option>
+                  <option [ngValue]="48">48 months (4 years)</option>
+                  <option [ngValue]="60">60 months (5 years)</option>
+                  <option [ngValue]="72">72 months (6 years)</option>
+                  <option [ngValue]="84">84 months (7 years)</option>
+                </select>
+              </div>
+              <div class="form-group mb-3">
+                <label for="interestRate" class="form-label">Interest Rate (%)</label>
+                <input type="number" class="form-control" id="interestRate" [(ngModel)]="interestRate" min="0" step="0.1">
+              </div>
+            </div>
+          </div>
+          
+          <div class="d-grid">
+            <button class="btn btn-warning btn-lg" (click)="calculatePayment()" type="button">Calculate Payment</button>
+          </div>
+          
+          <div class="mt-4 text-center" *ngIf="monthlyPayment > 0">
+            <div class="alert alert-success p-4">
+              <h3 class="mb-3">Your Estimated Monthly Payment</h3>
+              <h2 class="display-4 fw-bold">${{monthlyPayment | number:'1.2-2'}}</h2>
+              <p class="mt-2 mb-0">Based on your inputs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card mt-4 shadow border-0">
+        <div class="card-header bg-primary text-white">
+          <h3 class="mb-0">Financing Information</h3>
+        </div>
+        <div class="card-body">
+          <p>Our financing calculator helps you estimate your monthly car payments. Here's what you should know:</p>
+          <ul>
+            <li>The calculator provides an estimate only. Actual rates and terms may vary.</li>
+            <li>Interest rates depend on your credit score, loan term, and current market conditions.</li>
+            <li>A larger down payment typically results in lower monthly payments.</li>
+            <li>Shorter loan terms usually have higher monthly payments but lower total interest costs.</li>
+          </ul>
+          <p>For personalized financing options, please contact our finance department.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

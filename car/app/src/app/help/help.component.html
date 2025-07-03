@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white">
+          <h2 class="text-center mb-0">Help Center</h2>
+        </div>
+        <div class="card-body">
+          <div class="mb-5">
+            <h3 class="mb-4">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+              <div class="accordion-item mb-3 border rounded" *ngFor="let faq of faqs; let i = index">
+                <h2 class="accordion-header" [id]="'heading' + i">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + i" aria-expanded="false" [attr.aria-controls]="'collapse' + i">
+                    {{ faq.question }}
+                  </button>
+                </h2>
+                <div [id]="'collapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    {{ faq.answer }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-5">
+            <h3 class="mb-4">Contact Support</h3>
+            <div class="card border-0 bg-light">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-envelope-fill text-primary me-3 fs-1"></i>
+                      <div>
+                        <h5>Email Support</h5>
+                        <p class="mb-0">support&#64;carmarketplace.com</p>
+                        <small class="text-muted">Response within 24 hours</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-telephone-fill text-primary me-3 fs-1"></i>
+                      <div>
+                        <h5>Phone Support</h5>
+                        <p class="mb-0">1-800-CAR-HELP</p>
+                        <small class="text-muted">Mon-Fri, 9am-5pm EST</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

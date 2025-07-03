@@ -1,0 +1,65 @@
+<div class="container mt-4">
+  <h2 class="text-center text-primary">Buy Your Dream Car</h2>
+  <p class="text-center text-muted">Browse our selection of quality vehicles. Filter and buy with ease!</p>
+
+  <!-- Filter Section -->
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+        <div class="card-body">
+          <h5 class="card-title text-success">Filter Options</h5>
+
+          <!-- Price Range Filter -->
+          <div class="mb-3">
+            <label for="priceRange" class="form-label">Price Range</label>
+            <select id="priceRange" class="form-select" [(ngModel)]="selectedPriceRange" aria-label="Price Range">
+              <option>Any</option>
+              <option>Under $10,000</option>
+              <option>$10,000 - $20,000</option>
+              <option>$20,000 - $30,000</option>
+              <option>$30,000+</option>
+            </select>
+          </div>
+
+          <!-- Make Filter -->
+          <div class="mb-3">
+            <label for="carMake" class="form-label">Make</label>
+            <select id="carMake" class="form-select" [(ngModel)]="selectedMake" aria-label="Car Make">
+              <option>Any</option>
+              <option>Toyota</option>
+              <option>Honda</option>
+              <option>Ford</option>
+              <option>BMW</option>
+            </select>
+          </div>
+
+          <!-- Apply Filters Button -->
+          <button class="btn btn-primary w-100" (click)="applyFilters()">Apply Filters</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Car Listing -->
+    <div class="col-md-9">
+      <div class="row">
+        <!-- Car Card -->
+        <div class="col-md-4 mb-4" *ngFor="let car of filteredCars">
+          <div class="card shadow-sm p-3 mb-4 bg-white rounded custom-card">
+            <div class="position-relative">
+              <img [src]="car.image" class="card-img-top custom-img" alt="Car Image">
+              <span class="badge bg-info position-absolute top-0 start-0 m-2">{{ car.year }}</span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ car.make }} {{ car.name }}</h5>
+              <p class="card-text text-muted">${{ car.price }}</p>
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-sm btn-primary" (click)="viewCarDetails(car)">View Details</button>
+                <span class="badge bg-secondary align-self-center">{{ car.mileage }} miles</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

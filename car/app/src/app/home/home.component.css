@@ -1,0 +1,214 @@
+/* Inherit original styles */
+@import './home.page.css';
+
+/* Home component specific styles to override neon effects */
+
+/* Override neon text effects for better readability */
+:host {
+  display: block;
+}
+
+/* Make all text readable */
+:host h1, :host h2, :host h3, :host h4, :host h5, :host h6, :host .card-title {
+  color: #ffffff !important;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8) !important;
+  font-weight: normal;
+  opacity: 1 !important; /* Ensure all text is fully opaque */
+}
+
+/* Make paragraph text darker and more visible */
+:host p, :host .card-text, :host .lead {
+  color: #000000 !important; /* Black text for maximum contrast */
+  text-shadow: none !important;
+  font-weight: 500 !important; /* Medium weight for better visibility */
+  opacity: 1 !important; /* Ensure all text is fully opaque */
+  background-color: rgba(255, 255, 255, 0.8) !important; /* Light background for contrast */
+  padding: 5px !important;
+  border-radius: 3px !important;
+}
+
+/* Special styling for headings */
+:host h1.neon-text-primary, 
+:host h2.neon-text-primary, 
+:host h2.display-4, 
+:host h2.display-5 {
+  color: #00f3ff !important;
+  text-shadow: 0 0 5px rgba(0, 243, 255, 0.5) !important;
+  font-weight: bold;
+}
+
+:host h1.neon-text-secondary, 
+:host h2.neon-text-secondary {
+  color: #ff00e6 !important;
+  text-shadow: 0 0 5px rgba(255, 0, 230, 0.5) !important;
+  font-weight: bold;
+}
+
+:host h1.neon-text-accent, 
+:host h2.neon-text-accent {
+  color: #00ff8f !important;
+  text-shadow: 0 0 5px rgba(0, 255, 143, 0.5) !important;
+  font-weight: bold;
+}
+
+/* Card text */
+:host .card {
+  background-color: #1a1a2e !important;
+}
+
+:host .card-title {
+  color: #00f3ff !important;
+  font-weight: bold;
+  text-shadow: 0 0 3px rgba(0, 243, 255, 0.5) !important;
+}
+
+:host .card-text {
+  color: #000000 !important;
+  text-shadow: none !important;
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  padding: 5px !important;
+  border-radius: 3px !important;
+  font-weight: 500 !important;
+}
+
+/* Button styling */
+:host .btn-primary {
+  background-color: #0056b3 !important;
+  border-color: #0056b3 !important;
+  color: white !important;
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.5) !important;
+}
+
+:host .btn-success {
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+  color: white !important;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5) !important;
+}
+
+:host .btn-warning {
+  background-color: #ffc107 !important;
+  border-color: #ffc107 !important;
+  color: #212529 !important;
+  box-shadow: 0 0 5px rgba(255, 193, 7, 0.5) !important;
+}
+
+:host .btn-danger {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  color: white !important;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5) !important;
+}
+
+:host .btn-outline-primary {
+  color: #0056b3 !important;
+  border-color: #0056b3 !important;
+  background-color: transparent !important;
+}
+
+:host .btn-outline-primary:hover {
+  background-color: #0056b3 !important;
+  color: white !important;
+}
+
+:host .btn-outline-success {
+  color: #28a745 !important;
+  border-color: #28a745 !important;
+  background-color: transparent !important;
+}
+
+:host .btn-outline-success:hover {
+  background-color: #28a745 !important;
+  color: white !important;
+}
+
+/* Badge styling */
+:host .badge {
+  font-weight: normal !important;
+  box-shadow: none !important;
+}
+
+/* Carousel caption */
+:host .carousel-caption {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  border-radius: 8px !important;
+  padding: 20px !important;
+}
+
+:host .carousel-caption h1 {
+  font-size: 2.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+:host .carousel-caption p {
+  font-size: 1.2rem !important;
+  margin-bottom: 1.5rem !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 3px #000000 !important;
+  font-weight: bold !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  padding: 5px 10px !important;
+  border-radius: 5px !important;
+  display: inline-block !important;
+}
+
+/* Icon styling */
+:host .icon-circle {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Testimonial cards */
+:host .testimonial-card {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+:host .testimonial-card h6 {
+  color: #0056b3 !important;
+  font-weight: bold !important;
+}
+
+:host .testimonial-card small {
+  color: #333333 !important;
+  font-weight: 500 !important;
+}
+
+:host .testimonial-card p {
+  color: #000000 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+/* Reviews section */
+:host .reviews-heading {
+  font-size: 3rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+:host .reviews-description {
+  font-size: 1.2rem !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Tech data section */
+:host .tech-data {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-left: 3px solid #0056b3 !important;
+  color: #000000 !important;
+}
+
+:host .tech-data-header {
+  color: #0056b3 !important;
+  font-weight: bold !important;
+}
+
+:host .tech-data div {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+
+/* Clickable elements */
+:host .clickable {
+  cursor: pointer;
+}

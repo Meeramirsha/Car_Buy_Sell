@@ -1,0 +1,330 @@
+<div class="container-fluid p-0">
+  <!-- Hero Section with Carousel -->
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=600&q=80" class="d-block w-100" alt="Luxury Cars">
+        <div class="carousel-caption d-none d-md-block">
+          <h1 class="neon-text-primary animate-fadeInUp">Find Your Dream Car</h1>
+          <p class="animate-fadeInUp delay-1">Thousands of quality vehicles at competitive prices</p>
+          <a routerLink="/buy" class="btn btn-primary btn-lg me-2 animate-fadeInUp delay-2">Browse Cars</a>
+          <a routerLink="/sell" class="btn btn-success btn-lg animate-fadeInUp delay-3">Sell Your Car</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=600&q=80" class="d-block w-100" alt="Sports Car">
+        <div class="carousel-caption d-none d-md-block">
+          <h1 class="neon-text-secondary animate-fadeInUp">Premium Selection</h1>
+          <p class="animate-fadeInUp delay-1">From luxury sedans to rugged SUVs - we have it all</p>
+          <a routerLink="/cars" class="btn btn-primary btn-lg animate-fadeInUp delay-2 neon-pulse">View All Cars</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=600&q=80" class="d-block w-100" alt="Car Dealership">
+        <div class="carousel-caption d-none d-md-block">
+          <h1 class="neon-text-accent animate-fadeInUp">Sell With Confidence</h1>
+          <p class="animate-fadeInUp delay-1">Reach thousands of potential buyers with our platform</p>
+          <a routerLink="/sell" class="btn btn-success btn-lg animate-fadeInUp delay-2">List Your Car</a>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="container mt-5">
+    <!-- Welcome Section -->
+    <div class="row mb-5">
+      <div class="col-lg-6 animate-fadeInUp">
+        <h2 class="display-4 mb-4 neon-text-primary">Welcome to Our Car Platform</h2>
+        <p class="lead">The ultimate destination for buying and selling vehicles online.</p>
+        <div class="tech-data">
+          <div class="tech-data-header">PLATFORM SPECS</div>
+          <div>• Thousands of verified listings</div>
+          <div>• Advanced search algorithms</div>
+          <div>• Secure payment processing</div>
+          <div>• Real-time notifications</div>
+        </div>
+        <p>Our platform connects car enthusiasts, first-time buyers, and sellers in a secure and user-friendly environment. Whether you're looking for a family SUV, a luxury sedan, or a vintage classic, we've got you covered.</p>
+        <p>With thousands of listings updated daily, advanced search filters, and verified sellers, finding your perfect car has never been easier.</p>
+        <div class="mt-4">
+          <a routerLink="/buy" class="btn btn-outline-primary me-2 neon-pulse">Start Browsing</a>
+          <a routerLink="/sell" class="btn btn-outline-success">List Your Car</a>
+        </div>
+      </div>
+      <div class="col-lg-6 animate-fadeInUp delay-2">
+        <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" class="img-fluid rounded shadow-lg" alt="Car Showroom">
+      </div>
+    </div>
+
+    <!-- Main Options Cards -->
+    <div class="row mb-5">
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm border-0 rounded-3 hover-card">
+          <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" class="card-img-top" alt="Luxury Car">
+          <div class="card-body text-center">
+            <div class="icon-wrapper mb-3">
+              <i class="bi bi-car-front fs-1 text-primary"></i>
+            </div>
+            <h4 class="card-title">Buy Cars</h4>
+            <p class="card-text">Find your perfect match from thousands of listings. Filter by make, model, price, and more.</p>
+            <a routerLink="/buy" class="btn btn-primary mt-2">Browse Cars</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm border-0 rounded-3 hover-card">
+          <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" class="card-img-top" alt="Car for Sale">
+          <div class="card-body text-center">
+            <div class="icon-wrapper mb-3">
+              <i class="bi bi-tag-fill fs-1 text-success"></i>
+            </div>
+            <h4 class="card-title">Sell Cars</h4>
+            <p class="card-text">List your vehicle and reach thousands of potential buyers quickly and securely.</p>
+            <a routerLink="/sell" class="btn btn-success mt-2">Sell Your Car</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm border-0 rounded-3 hover-card">
+          <img src="https://images.unsplash.com/photo-1551135049-8a33b5883817?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" class="card-img-top" alt="Car Financing">
+          <div class="card-body text-center">
+            <div class="icon-wrapper mb-3">
+              <i class="bi bi-calculator fs-1 text-warning"></i>
+            </div>
+            <h4 class="card-title">Financing</h4>
+            <p class="card-text">We offer competitive financing rates starting at 2.9% APR with flexible terms from 24-72 months.</p>
+            <button (click)="goToFinancing()" class="btn btn-warning mt-2 clickable">Calculate Payment</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm border-0 rounded-3 hover-card">
+          <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" class="card-img-top" alt="Car Support">
+          <div class="card-body text-center">
+            <div class="icon-wrapper mb-3">
+              <i class="bi bi-headset fs-1 text-info"></i>
+            </div>
+            <h4 class="card-title">Support</h4>
+            <p class="card-text">Get expert help with buying, selling, or any questions about our platform from our dedicated team.</p>
+            <a routerLink="/help" class="btn btn-info mt-2">Get Help</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  
+    <!-- Featured Cars Section -->
+    <div class="tech-bg py-5">
+      <h2 class="text-center display-5 mt-5 mb-4 neon-text-primary">Featured Cars</h2>
+      <p class="text-center mb-5">Discover our handpicked selection of premium vehicles</p>
+      <div class="row">
+        <div class="col-md-4 mb-4 animate-fadeInUp" *ngFor="let car of featuredCars; let i = index" [ngClass]="'delay-' + (i+1)">
+          <div class="card shadow hover-card">
+            <div class="position-relative">
+              <img [src]="car.image" class="card-img-top car-img" alt="Car Image">
+              <span class="position-absolute top-0 end-0 badge bg-primary m-2 neon-pulse">Featured</span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title neon-text-primary">{{ car.make }} {{ car.model }}</h5>
+              <p class="card-text mb-1">Year: {{ car.year }}</p>
+              <p class="card-text neon-text-accent fw-bold fs-4">${{ car.price }}</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <div>
+                  <span class="badge bg-light text-dark me-1"><i class="bi bi-speedometer2"></i> {{ car.mileage || '25,000' }} mi</span>
+                  <span class="badge bg-light text-dark"><i class="bi bi-fuel-pump"></i> {{ car.fuelType || 'Gasoline' }}</span>
+                </div>
+                <a [routerLink]="['/cars']" [queryParams]="{id: car.id}" class="btn btn-sm btn-outline-primary">View Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-3 mb-5">
+        <a routerLink="/cars" class="btn btn-outline-primary neon-pulse">View All Cars</a>
+      </div>
+    </div>
+    
+    <!-- Reviews Section -->
+    <div id="reviews" class="row mt-5 mb-5 py-5 rounded-3 testimonials-bg">
+      <div class="col-12 text-center mb-4">
+        <h2 class="display-5 neon-text-secondary reviews-heading">★ Customer Reviews ★</h2>
+        <p class="reviews-description">See what our satisfied customers have to say about their experience</p>
+        <div class="d-flex justify-content-center mb-4">
+          <div class="bg-light px-4 py-2 rounded-pill">
+            <span class="fs-4">
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-half text-warning"></i>
+              <span class="ms-2 text-dark">4.8/5 from 2,300+ reviews</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 animate-fadeInUp">
+        <div class="testimonial-card h-100">
+          <div class="card-body">
+            <div class="d-flex mb-3">
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+            </div>
+            <p class="card-text">"I found my dream car within a week of searching. The filters made it so easy to narrow down exactly what I wanted. Highly recommend!"</p>
+            <div class="d-flex align-items-center mt-3">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="50" height="50" alt="Customer">
+              <div>
+                <h6 class="mb-0 neon-text-primary">Michael Johnson</h6>
+                <small>Bought a BMW 3 Series</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 animate-fadeInUp delay-1">
+        <div class="testimonial-card h-100">
+          <div class="card-body">
+            <div class="d-flex mb-3">
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-half text-warning"></i>
+            </div>
+            <p class="card-text">"Selling my car was a breeze. I had multiple offers within days and the secure payment system gave me peace of mind throughout the process."</p>
+            <div class="d-flex align-items-center mt-3">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle me-3" width="50" height="50" alt="Customer">
+              <div>
+                <h6 class="mb-0 neon-text-primary">Sarah Williams</h6>
+                <small>Sold a Toyota Camry</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 animate-fadeInUp delay-2">
+        <div class="testimonial-card h-100">
+          <div class="card-body">
+            <div class="d-flex mb-3">
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+            </div>
+            <p class="card-text">"The customer service was exceptional. When I had questions about a listing, the team responded quickly and helped me make an informed decision."</p>
+            <div class="d-flex align-items-center mt-3">
+              <img src="https://randomuser.me/api/portraits/men/67.jpg" class="rounded-circle me-3" width="50" height="50" alt="Customer">
+              <div>
+                <h6 class="mb-0 neon-text-primary">David Thompson</h6>
+                <small>Bought a Honda CR-V</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Why Choose Us Section -->
+    <div class="row mt-5 mb-5 tech-bg py-5">
+      <div class="col-12 text-center mb-4">
+        <h2 class="display-5 neon-text-primary">Why Choose Our Platform</h2>
+        <p class="mb-5">We're committed to providing the best car buying and selling experience</p>
+      </div>
+      <div class="col-md-3 mb-4 animate-fadeInUp">
+        <div class="card border-0 text-center h-100 hover-card">
+          <div class="card-body">
+            <div class="icon-circle bg-primary text-white mb-4 mx-auto neon-pulse">
+              <i class="bi bi-shield-check fs-3"></i>
+            </div>
+            <h4 class="neon-text-primary">Trusted Sellers</h4>
+            <p>All our sellers are verified for your peace of mind and security.</p>
+            <div class="tech-data mt-3">
+              <div>• Identity verification</div>
+              <div>• Secure transactions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 animate-fadeInUp delay-1">
+        <div class="card border-0 text-center h-100 hover-card">
+          <div class="card-body">
+            <div class="icon-circle bg-success text-white mb-4 mx-auto">
+              <i class="bi bi-currency-dollar fs-3"></i>
+            </div>
+            <h4 class="neon-text-success">Best Prices</h4>
+            <p>Competitive pricing with no hidden fees or surprise charges.</p>
+            <div class="tech-data mt-3">
+              <div>• Market analysis</div>
+              <div>• Price comparison</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 animate-fadeInUp delay-2">
+        <div class="card border-0 text-center h-100 hover-card">
+          <div class="card-body">
+            <div class="icon-circle bg-info text-white mb-4 mx-auto">
+              <i class="bi bi-search fs-3"></i>
+            </div>
+            <h4 class="neon-text-info">Easy Search</h4>
+            <p>Find exactly what you're looking for with our advanced filters.</p>
+            <div class="tech-data mt-3">
+              <div>• AI-powered search</div>
+              <div>• Custom filters</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 animate-fadeInUp delay-3">
+        <div class="card border-0 text-center h-100 hover-card">
+          <div class="card-body">
+            <div class="icon-circle bg-warning text-white mb-4 mx-auto">
+              <i class="bi bi-headset fs-3"></i>
+            </div>
+            <h4 class="neon-text-warning">24/7 Support</h4>
+            <p>Our dedicated team is always ready to assist you with any questions.</p>
+            <div class="tech-data mt-3">
+              <div>• Live chat support</div>
+              <div>• Quick response time</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="row mt-5 mb-5">
+      <div class="col-12 animate-fadeInUp">
+        <div class="p-5 rounded-3 text-center cta-container">
+          <h2 class="display-5 mb-3 neon-text-primary">Ready to Find Your Perfect Car?</h2>
+          <p class="lead mb-4">Join thousands of satisfied customers who found their dream cars on our platform</p>
+          <div class="tech-data mb-4">
+            <div class="tech-data-header">SYSTEM READY</div>
+            <div class="d-flex justify-content-between">
+              <span>SEARCH ENGINE: <span class="neon-text-accent">ONLINE</span></span>
+              <span>LISTINGS: <span class="neon-text-accent">UPDATED</span></span>
+              <span>SECURE PAYMENT: <span class="neon-text-accent">ACTIVE</span></span>
+            </div>
+          </div>
+          <a routerLink="/buy" class="btn btn-primary btn-lg me-2 neon-pulse">Browse Cars</a>
+          <a routerLink="/sell" class="btn btn-outline-success btn-lg">Sell Your Car</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+/* External CSS file for the BuyComponent */
+
+/* Custom styles for the card */
+.custom-card {
+  transition: transform 0.3s ease;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom styles for the image */
+.custom-img {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Styling for the card body */
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.card-text {
+  font-size: 1em;
+  color: #777;
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}

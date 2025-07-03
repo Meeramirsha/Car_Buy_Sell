@@ -1,0 +1,61 @@
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Add Your Car</h2>
+    <p class="text-center text-muted">Fill out the form below to add your vehicle to the marketplace.</p>
+  
+    <div class="card mt-4 shadow-sm p-3 mb-5 bg-white rounded">
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="carMake" class="form-label">Car Make</label>
+            <input type="text" class="form-control" id="carMake" [(ngModel)]="car.make" name="make" required placeholder="e.g., Toyota">
+
+          </div>
+  
+          <div class="mb-3">
+            <label for="carModel" class="form-label">Car Model</label>
+            <input type="text" class="form-control" id="carModel" [(ngModel)]="car.model" name="model" required placeholder="e.g., Camry">
+          </div>
+  
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="carYear" class="form-label">Year</label>
+              <input type="number" class="form-control" id="carYear" [(ngModel)]="car.year" name="year" required placeholder="e.g., 2020">
+            </div>
+  
+            <div class="col-md-6 mb-3">
+              <label for="carMileage" class="form-label">Mileage</label>
+              <input type="number" class="form-control" id="carMileage" [(ngModel)]="car.mileage" name="mileage" required placeholder="e.g., 25000">
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="carPrice" class="form-label">Asking Price ($)</label>
+            <input type="number" class="form-control" id="carPrice" [(ngModel)]="car.price" name="price" required placeholder="e.g., 25000">
+          </div>
+  
+          <div class="mb-3">
+            <label for="carDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="carDescription" [(ngModel)]="car.description" name="description" rows="3" required placeholder="Describe your car's condition, features, etc."></textarea>
+          </div>
+  
+          <div class="mb-3">
+            <label for="carPhotos" class="form-label">Upload Photos</label>
+            <input type="file" class="form-control" id="carPhotos" [(ngModel)]="car.image" name="image">
+          </div>
+  
+          <div class="mb-3">
+            <label for="contactPhone" class="form-label">Contact Phone</label>
+            <input type="tel" class="form-control" id="contactPhone" [(ngModel)]="car.contactPhone" name="contactPhone" required>
+          </div>
+  
+          <div class="mb-3">
+            <label for="contactEmail" class="form-label">Contact Email</label>
+            <input type="email" class="form-control" id="contactEmail" [(ngModel)]="car.contactEmail" name="contactEmail" required>
+          </div>
+  
+          <button type="submit" class="btn btn-success w-100">Submit Car</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

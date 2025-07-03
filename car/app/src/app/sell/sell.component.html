@@ -1,0 +1,113 @@
+<div class="container mt-4 sell-container">
+  <h2 class="text-center text-primary">Sell Your Car</h2>
+  <p class="text-center text-muted">Fill out the form below to list your vehicle on our marketplace.</p>
+
+  <div class="alert alert-success" *ngIf="showSuccess">
+    <strong>Success!</strong> {{ successMessage }}
+  </div>
+
+  <div class="card mt-4 shadow-sm p-3 mb-5 bg-white rounded">
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="carMake" class="form-label">Car Make</label>
+            <input type="text" class="form-control" id="carMake" [(ngModel)]="car.make" name="make" required placeholder="e.g., Toyota">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="carModel" class="form-label">Car Model</label>
+            <input type="text" class="form-control" id="carModel" [(ngModel)]="car.model" name="model" required placeholder="e.g., Camry">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="carYear" class="form-label">Year</label>
+            <input type="number" class="form-control" id="carYear" [(ngModel)]="car.year" name="year" required placeholder="e.g., 2020">
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="carMileage" class="form-label">Mileage</label>
+            <input type="number" class="form-control" id="carMileage" [(ngModel)]="car.mileage" name="mileage" required placeholder="e.g., 25000">
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="carColor" class="form-label">Color</label>
+            <input type="text" class="form-control" id="carColor" [(ngModel)]="car.color" name="color" placeholder="e.g., Blue">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="fuelType" class="form-label">Fuel Type</label>
+            <select class="form-select" id="fuelType" [(ngModel)]="car.fuelType" name="fuelType">
+              <option value="Gasoline">Gasoline</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Electric">Electric</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="transmission" class="form-label">Transmission</label>
+            <select class="form-select" id="transmission" [(ngModel)]="car.transmission" name="transmission">
+              <option value="Automatic">Automatic</option>
+              <option value="Manual">Manual</option>
+              <option value="CVT">CVT</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="carPrice" class="form-label">Asking Price ($)</label>
+          <input type="number" class="form-control" id="carPrice" [(ngModel)]="car.price" name="price" required placeholder="e.g., 25000">
+        </div>
+
+        <div class="mb-3">
+          <label for="carDescription" class="form-label">Description</label>
+          <textarea class="form-control" id="carDescription" [(ngModel)]="car.description" name="description" rows="3" required placeholder="Describe your car's condition, features, etc."></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="carImage" class="form-label">Car Image URL</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="carImage" [(ngModel)]="car.image" name="image" placeholder="https://example.com/car-image.jpg">
+            <button class="btn btn-outline-secondary" type="button" (click)="useDefaultImage()">Use Default</button>
+          </div>
+          <div class="form-text">Enter a URL for your car image or use our default image.</div>
+          <div *ngIf="car.image" class="mt-2">
+            <img [src]="car.image" class="img-thumbnail car-preview-img" alt="Car preview">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Features</label>
+          <div class="input-group mb-2">
+            <input type="text" class="form-control" [(ngModel)]="newFeature" name="newFeature" placeholder="e.g., Leather Seats">
+            <button class="btn btn-outline-primary" type="button" (click)="addFeature()">Add</button>
+          </div>
+          <div class="mt-2" *ngIf="car.features && car.features.length > 0">
+            <span *ngFor="let feature of car.features; let i = index" class="badge bg-primary me-2 mb-2">
+              {{ feature }} <i class="bi bi-x-circle feature-remove-icon" (click)="removeFeature(i)"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="contactPhone" class="form-label">Contact Phone</label>
+            <input type="tel" class="form-control" id="contactPhone" [(ngModel)]="car.contactPhone" name="contactPhone" required>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="contactEmail" class="form-label">Contact Email</label>
+            <input type="email" class="form-control" id="contactEmail" [(ngModel)]="car.contactEmail" name="contactEmail" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">List Your Car</button>
+      </form>
+    </div>
+  </div>
+</div>

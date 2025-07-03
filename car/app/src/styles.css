@@ -1,0 +1,107 @@
+/* You can add global styles to this file, and also import other style files */
+@import './basel-neon-theme.css';
+
+/* Global overrides for better readability */
+body {
+  background-color: #f8f9fa !important;
+  color: #333 !important;
+}
+
+/* Reduce neon text effect intensity for better readability */
+.neon-text-primary {
+  color: #00f3ff !important;
+  text-shadow: 0 0 5px rgba(0, 243, 255, 0.5) !important;
+  font-weight: bold !important;
+}
+
+.neon-text-secondary {
+  color: #ff00e6 !important;
+  text-shadow: 0 0 5px rgba(255, 0, 230, 0.5) !important;
+  font-weight: bold !important;
+}
+
+.neon-text-accent {
+  color: #00ff8f !important;
+  text-shadow: 0 0 5px rgba(0, 255, 143, 0.5) !important;
+  font-weight: bold !important;
+}
+
+/* Make form labels and text more readable */
+label, .form-label, .form-text, p {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+/* Ensure headings are readable */
+h1, h2, h3, h4, h5, h6 {
+  color: #333 !important;
+  text-shadow: 0 0 1px currentColor !important;
+}
+
+/* Make sure all text in cards is readable */
+.card-title, .card-text {
+  color: #333 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+  font-weight: normal;
+}
+
+.card-title {
+  font-weight: bold !important;
+}
+
+/* Ensure buttons have readable text */
+.btn {
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* Fix navigation links */
+a {
+  cursor: pointer !important;
+  opacity: 1 !important;
+}
+
+/* Card styling for better visibility */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Override any theme styles that might be causing fading */
+.card-body {
+  opacity: 1 !important;
+  color: #333 !important;
+}
+
+/* Ensure proper contrast for card backgrounds */
+.card .card-body {
+  background-color: #fff !important;
+}
+
+/* Specific styles for the sell page */
+.sell-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+button:hover {
+  background-color: #28a745 !important;
+  transition: background-color 0.3s ease;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #333 !important; /* Ensure text color is set */
+  text-shadow: none !important; /* Remove text shadow */
+}
+h1.mb-1 {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
