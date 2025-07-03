@@ -71,8 +71,14 @@ Make, Model, Price
 
 Fuel Type, Year, Features
 
-Contact info & image URLs
 
+
+
+![Homepage](assets/homepage.png)
+
+
+![Car Details](assets/car-details.png)
+![Car1 Details](assets/car1.png)
 💡 Notes
 Ensure application.properties in the backend has correct DB credentials
 
