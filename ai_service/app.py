@@ -63,4 +63,5 @@ def health():
     return jsonify({'status': 'AI Service is running!'})
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    # Listen on 0.0.0.0 to allow external connections (required for Render)
+    app.run(host='0.0.0.0', port=5000, debug=True)
