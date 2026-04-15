@@ -1,0 +1,97 @@
+<div class="container py-5 animate__animated animate__fadeIn">
+    <div class="row mb-5">
+      <div class="col-lg-8">
+        <h1 class="fw-bold text-primary mb-1">My Dashboard</h1>
+        <p class="text-muted">Track your car rentals, history, and preferences.</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <div class="d-inline-flex align-items-center bg-white p-2 px-3 rounded shadow-sm border">
+          <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+            <i class="bi bi-person"></i>
+          </div>
+          <div class="text-start">
+            <div class="fw-bold small">{{ authService.getRole() }} Profile</div>
+            <div class="smallest text-muted">Active Member</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Performance Stats -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="card stat-card shadow-sm border-0">
+          <div class="stat-label">All Bookings</div>
+          <div class="stat-value">{{ bookings.length }}</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card stat-card shadow-sm border-0" style="border-left-color: #27ae60 !important;">
+          <div class="stat-label">Confirmed</div>
+          <div class="stat-value">{{ getConfirmedCount() }}</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card stat-card shadow-sm border-0" style="border-left-color: #f39c12 !important;">
+          <div class="stat-label">Pending</div>
+          <div class="stat-value">{{ getPendingCount() }}</div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Trip History Table -->
+    <div class="bg-white rounded shadow-sm overflow-hidden mb-5">
+      <div class="p-4 border-bottom bg-light-soft d-flex justify-content-between align-items-center">
+        <h5 class="fw-bold mb-0">Trip History</h5>
+        <a routerLink="/cars" class="btn btn-primary btn-sm">Book New Trip</a>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle mb-0 border-0">
+          <thead>
+            <tr>
+              <th class="border-0">Vehicle</th>
+              <th class="border-0">Rental Dates</th>
+              <th class="border-0 text-center">Amount Paid</th>
+              <th class="border-0 text-center">Status</th>
+              <th class="border-0 text-end">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let booking of bookings">
+              <td>
+                <div class="d-flex align-items-center">
+                  <img [src]="booking.car.image || 'assets/placeholder-car.jpg'" class="rounded me-3" width="60" height="40" style="object-fit: cover;">
+                  <div>
+                    <span class="fw-bold d-block text-primary">{{ booking.car.make }} {{ booking.car.model }}</span>
+                    <small class="text-muted">Ref: #{{ booking.id }}</small>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="small fw-bold">{{ booking.startDate | date:'mediumDate' }}</div>
+                <div class="smallest text-muted">to {{ booking.endDate | date:'mediumDate' }}</div>
+              </td>
+              <td class="text-center">
+                <span class="fw-bold">₹{{ booking.totalPrice }}</span>
+              </td>
+              <td class="text-center">
+                <span class="badge" 
+                      [ngClass]="{'bg-warning': booking.status === 'PENDING', 'bg-success': booking.status === 'CONFIRMED'}">
+                  {{ booking.status }}
+                </span>
+              </td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary shadow-xs">View Details</button>
+              </td>
+            </tr>
+            <tr *ngIf="bookings.length === 0">
+              <td colspan="5" class="py-5 text-center text-muted">
+                <i class="bi bi-inbox fs-1 d-block mb-3 opacity-25"></i>
+                You haven't made any trips yet.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

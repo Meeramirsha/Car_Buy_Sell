@@ -60,14 +60,14 @@
 
 /* Call to Action Section */
 .cta-container {
-  background-color: var(--dark-bg-tertiary);
-  border: 1px solid var(--neon-primary);
-  box-shadow: 0 0 20px var(--neon-primary);
+  background-color: var(--primary);
+  border-radius: var(--border-radius-lg);
+  color: white;
 }
 
 /* Testimonials Section */
 .testimonials-bg {
-  background-color: var(--dark-bg-tertiary);
+  background-color: var(--gray-100);
 }
 
 /* Responsive adjustments */

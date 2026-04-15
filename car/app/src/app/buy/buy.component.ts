@@ -2,96 +2,104 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { CarService, Car } from '../services/car.service';
+import { WishlistService } from '../services/wishlist.service';
+import { ComparisonService } from '../services/comparison.service';
 
 @Component({
   selector: 'app-buy',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './buy.component.html',
-  styleUrls: ['./buy.component.css'],
+  styleUrls: ['./buy.component.css']
 })
 export class BuyComponent implements OnInit {
-  cars = [
-    {
-      id: 1,
-      make: 'Toyota',
-      name: 'Camry',
-      year: 2022,
-      price: 25000,
-      mileage: 15000,
-      image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80'
-    },
-    {
-      id: 2,
-      make: 'Honda',
-      name: 'Accord',
-      year: 2021,
-      price: 22000,
-      mileage: 18000,
-      image: 'https://images.unsplash.com/photo-1583267746897-2cf415887172?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80'
-    },
-    {
-      id: 3,
-      make: 'Ford',
-      name: 'Mustang',
-      year: 2022,
-      price: 35000,
-      mileage: 10000,
-      image: 'https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80'
-    },
-    {
-      id: 4,
-      make: 'BMW',
-      name: '3 Series',
-      year: 2021,
-      price: 42000,
-      mileage: 12000,
-      image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80'
-    }
-  ];
-  
-  filteredCars = [...this.cars];
-  wishlist = [
-    { id: 1, name: 'Toyota Camry', price: 25000, image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80' },
-    { id: 2, name: 'Honda Accord', price: 22000, image: 'https://images.unsplash.com/photo-1583267746897-2cf415887172?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80' }
-  ];
+  cars: Car[] = [];
+  filteredCars: Car[] = [];
+  wishlistIds: Set<number> = new Set();
+  comparisonCount: number = 0;
   
   selectedPriceRange = 'Any';
   selectedMake = 'Any';
   
-  constructor(private router: Router) {}
+  constructor(
+    private carService: CarService, 
+    private wishlistService: WishlistService,
+    private comparisonService: ComparisonService,
+    private router: Router
+  ) {}
   
   ngOnInit() {
-    this.filteredCars = [...this.cars];
+    this.loadWishlist();
+    this.carService.getCars().subscribe(cars => {
+      this.cars = cars;
+      this.filteredCars = [...this.cars];
+    });
+  }
+
+  loadWishlist(): void {
+    this.wishlistService.getWishlist().subscribe({
+      next: (cars) => {
+        this.wishlistIds = new Set(cars.map(c => c.id));
+      },
+      error: (err) => console.error('Error loading wishlist:', err)
+    });
+  }
+
+  // Helper methods for the template
+  public isWishlisted(carId: number): boolean {
+    return this.wishlistIds.has(carId);
+  }
+
+  public toggleWishlist(car: any): void {
+    if (this.isWishlisted(car.id)) {
+      this.wishlistService.removeFromWishlist(car.id).subscribe(() => {
+        this.wishlistIds.delete(car.id);
+      });
+    } else {
+      this.wishlistService.addToWishlist(car.id).subscribe(() => {
+        this.wishlistIds.add(car.id);
+      });
+    }
   }
   
-  applyFilters() {
+  public applyFilters() {
     this.filteredCars = this.cars.filter(car => {
-      // Filter by make
       const makeMatch = this.selectedMake === 'Any' || car.make === this.selectedMake;
-      
-      // Filter by price range
       let priceMatch = true;
-      if (this.selectedPriceRange === 'Under $10,000') {
-        priceMatch = car.price < 10000;
-      } else if (this.selectedPriceRange === '$10,000 - $20,000') {
-        priceMatch = car.price >= 10000 && car.price <= 20000;
-      } else if (this.selectedPriceRange === '$20,000 - $30,000') {
-        priceMatch = car.price > 20000 && car.price <= 30000;
-      } else if (this.selectedPriceRange === '$30,000+') {
-        priceMatch = car.price > 30000;
+      if (this.selectedPriceRange === 'Under ₹5,00,000') {
+        priceMatch = car.price < 500000;
+      } else if (this.selectedPriceRange === '₹5,00,000 - ₹10,00,000') {
+        priceMatch = car.price >= 500000 && car.price <= 1000000;
+      } else if (this.selectedPriceRange === '₹10,00,000 - ₹20,00,000') {
+        priceMatch = car.price > 1000000 && car.price <= 2000000;
+      } else if (this.selectedPriceRange === '₹20,00,000+') {
+        priceMatch = car.price > 2000000;
       }
-      
       return makeMatch && priceMatch;
     });
   }
-  
-  removeFromWishlist(car: any) {
-    this.wishlist = this.wishlist.filter(item => item.id !== car.id);
+
+  // Diagnostic Renamed Methods
+  public checkSelected(carId: any): boolean {
+    return this.comparisonService.isCarSelected(carId);
   }
-  
-  viewCarDetails(car: any) {
-    // Navigate to car details page (for now, just go to car list)
-    this.router.navigate(['/cars']);
+
+  public handleToggle(car: any): void {
+    this.comparisonService.toggleCarSelection(car);
+    this.comparisonCount = this.comparisonService.getSelectionCount();
+  }
+
+  public openDetails(car: any): void {
+    this.router.navigate(['/booking', car.id]);
+  }
+
+  public startCompare(): void {
+    const selected = this.comparisonService.getSelectedCars();
+    if (selected.length === 2) {
+      this.router.navigate(['/compare'], { 
+        queryParams: { car1: selected[0].id, car2: selected[1].id } 
+      });
+    }
   }
 }

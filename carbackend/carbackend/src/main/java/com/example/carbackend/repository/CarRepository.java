@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
     List<Car> findByMake(String make);
+    List<Car> findByBodyType(String bodyType);
     List<Car> findByPriceLessThan(double price);
     List<Car> findByPriceBetween(double minPrice, double maxPrice);
     List<Car> findByPriceGreaterThan(double price);

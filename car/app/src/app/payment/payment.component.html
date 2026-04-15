@@ -1,0 +1,56 @@
+<div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="card border-0 shadow-lg animate__animated animate__zoomIn">
+          <div class="card-body p-5 text-center">
+            <div class="mb-4">
+              <div class="bg-primary-light text-primary rounded-circle d-flex align-items-center justify-content-center mx-auto" style="width: 80px; height: 80px;">
+                <i class="bi bi-shield-lock-fill fs-1"></i>
+              </div>
+            </div>
+            
+            <h2 class="fw-bold mb-1">Secure Checkout</h2>
+            <p class="text-muted small mb-4">Reference: #{{ bookingId }}</p>
+  
+            <div *ngIf="successMessage" class="animate__animated animate__bounceIn">
+              <div class="alert alert-success border-0 py-3 mb-4">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                {{ successMessage }}
+              </div>
+              <a routerLink="/dashboard" class="btn btn-primary btn-lg w-100">View My Bookings</a>
+            </div>
+  
+            <div *ngIf="errorMessage" class="alert alert-danger border-0 mb-4 small">
+              {{ errorMessage }}
+            </div>
+  
+            <div *ngIf="!successMessage" class="text-start">
+              <div class="bg-light p-4 rounded mb-4">
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="text-muted small fw-bold">TOTAL AMOUNT</span>
+                  <h3 class="fw-bold mb-0 text-primary">${{ paymentForm.get('amount')?.value }}</h3>
+                </div>
+              </div>
+  
+              <p class="text-muted small mb-4 text-center">
+                Clicking the button below will securely process your booking and finalize your vehicle reservation.
+              </p>
+  
+              <button class="btn btn-primary btn-lg w-100 py-3 shadow-sm mb-4" (click)="processPayment()" [disabled]="processing">
+                <span *ngIf="processing" class="spinner-border spinner-border-sm me-2"></span>
+                {{ processing ? 'Processing Payment...' : 'Secure Checkout' }}
+              </button>
+  
+              <div class="text-center pt-3 border-top">
+                <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+                  <i class="bi bi-lock-fill text-success small"></i>
+                  <span class="smallest text-muted text-uppercase fw-bold tracking-wider">Secured by Razorpay</span>
+                </div>
+                <img src="https://razorpay.com/assets/razorpay-payment-modes.png" height="20" class="opacity-75" alt="Payment Methods">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

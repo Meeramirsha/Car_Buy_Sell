@@ -1,0 +1,107 @@
+<div class="row mb-4 align-items-center">
+    <div class="col">
+        <h4 class="fw-bold mb-1">Vehicle Inventory</h4>
+        <p class="text-muted small">Manage your fleet of {{ cars.length }} vehicles.</p>
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-primary" (click)="toggleForm()">
+            <i class="bi bi-plus-lg me-2"></i>Add New Car
+        </button>
+    </div>
+</div>
+
+<!-- Simple Entry Form -->
+<div class="card border-0 shadow-sm mb-5" *ngIf="showForm">
+    <div class="card-body p-4">
+        <h5 class="fw-bold mb-4">{{ isEditing ? 'Edit Car' : 'Add New Car' }}</h5>
+        <form (ngSubmit)="onSubmit()" #carForm="ngForm">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label small fw-bold">Make</label>
+                    <input type="text" class="form-control" name="make" [(ngModel)]="carData.make" required placeholder="e.g. Toyota">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label small fw-bold">Model</label>
+                    <input type="text" class="form-control" name="model" [(ngModel)]="carData.model" required placeholder="e.g. Camry">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label small fw-bold">Year</label>
+                    <input type="number" class="form-control" name="year" [(ngModel)]="carData.year" required>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label small fw-bold">Price per Day ($)</label>
+                    <input type="number" class="form-control" name="price" [(ngModel)]="carData.price" required>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label small fw-bold">Mileage (km)</label>
+                    <input type="number" class="form-control" name="mileage" [(ngModel)]="carData.mileage" required>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label small fw-bold">Fuel Type</label>
+                    <select class="form-select" name="fuelType" [(ngModel)]="carData.fuelType">
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Electric">Electric</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label small fw-bold d-block">Available</label>
+                    <div class="form-check form-switch mt-2">
+                        <input class="form-check-input" type="checkbox" name="availability" [(ngModel)]="carData.availability">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label class="form-label small fw-bold">Image URL</label>
+                    <input type="text" class="form-control" name="image" [(ngModel)]="carData.image">
+                </div>
+                <div class="col-12">
+                    <label class="form-label small fw-bold">Description</label>
+                    <textarea class="form-control" name="description" rows="2" [(ngModel)]="carData.description"></textarea>
+                </div>
+                <div class="col-12 text-end mt-4">
+                    <button type="button" class="btn btn-light me-2" (click)="showForm = false; isEditing = false">Cancel</button>
+                    <button type="submit" class="btn btn-primary px-4" [disabled]="!carForm.valid">Save Changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Clean Striped Table -->
+<div class="bg-white rounded shadow-sm overflow-hidden">
+    <table class="table table-striped table-hover align-middle mb-0">
+        <thead>
+            <tr>
+                <th class="border-0">Car Details</th>
+                <th class="border-0">Price/Day</th>
+                <th class="border-0">Year</th>
+                <th class="border-0">Status</th>
+                <th class="border-0 text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let car of cars">
+                <td>
+                    <div class="d-flex align-items-center">
+                        <img [src]="car.image || 'assets/placeholder-car.jpg'" class="rounded me-3" width="60" height="40" style="object-fit: cover;">
+                        <div>
+                            <span class="fw-bold d-block text-primary">{{ car.make }} {{ car.model }}</span>
+                            <small class="text-muted">{{ car.fuelType }}</small>
+                        </div>
+                    </div>
+                </td>
+                <td><span class="fw-bold">${{ car.price }}</span></td>
+                <td>{{ car.year }}</td>
+                <td>
+                    <span class="badge" [ngClass]="car.availability ? 'bg-success' : 'bg-danger'">
+                        {{ car.availability ? 'Available' : 'Booked' }}
+                    </span>
+                </td>
+                <td class="text-end">
+                    <button class="btn btn-sm btn-outline-primary me-2" (click)="toggleForm(car)">Edit</button>
+                    <button class="btn btn-sm btn-outline-danger" (click)="deleteCar(car.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

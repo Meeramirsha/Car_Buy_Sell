@@ -1,107 +1,219 @@
-/* You can add global styles to this file, and also import other style files */
-@import './basel-neon-theme.css';
+/* 
+  SmartCar Professional Theme
+  Clean, Modern, and Professional SaaS-style Design
+*/
 
-/* Global overrides for better readability */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
+
+:root {
+  /* Exact User-Defined Color Palette */
+  --primary: #3498DB;      /* Modern Blue */
+  --secondary: #3498DB;    /* Matching secondary to primary for consistency */
+  --bg-color: #F5F7FA;     /* SaaS Light Grey */
+  --card-bg: #FFFFFF;      /* Pure White */
+  --text-color: #333333;   /* Graphite Text */
+  
+  /* Additional UI Tokens */
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  
+  --success: #2ecc71;
+  --warning: #f1c40f;
+  --danger: #e74c3c;
+
+  /* Typography */
+  --font-main: 'Inter', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+
+  /* Spacing & Borders */
+  --border-radius: 8px;
+  --border-radius-sm: 6px;
+  --transition: all 0.2s ease-in-out;
+  
+  /* Soft Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  scrollbar-gutter: stable; /* Pre-allocates space for scrollbar to prevent layout shifts */
+}
+
 body {
-  background-color: #f8f9fa !important;
-  color: #333 !important;
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Reduce neon text effect intensity for better readability */
-.neon-text-primary {
-  color: #00f3ff !important;
-  text-shadow: 0 0 5px rgba(0, 243, 255, 0.5) !important;
-  font-weight: bold !important;
-}
-
-.neon-text-secondary {
-  color: #ff00e6 !important;
-  text-shadow: 0 0 5px rgba(255, 0, 230, 0.5) !important;
-  font-weight: bold !important;
-}
-
-.neon-text-accent {
-  color: #00ff8f !important;
-  text-shadow: 0 0 5px rgba(0, 255, 143, 0.5) !important;
-  font-weight: bold !important;
-}
-
-/* Make form labels and text more readable */
-label, .form-label, .form-text, p {
-  color: #333 !important;
-  text-shadow: none !important;
-}
-
-/* Ensure headings are readable */
 h1, h2, h3, h4, h5, h6 {
-  color: #333 !important;
-  text-shadow: 0 0 1px currentColor !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--primary);
 }
 
-/* Make sure all text in cards is readable */
-.card-title, .card-text {
-  color: #333 !important;
-  text-shadow: none !important;
-  opacity: 1 !important;
-  font-weight: normal;
+/* Navbar - Simple & White */
+.navbar {
+  background-color: white !important;
+  border-bottom: 1px solid var(--gray-200);
+  padding: 0.75rem 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar-brand {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--primary) !important;
+}
+
+.nav-link {
+  color: var(--text-color) !important;
+  font-weight: 500;
+  margin-right: 1.5rem;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--secondary) !important;
+}
+
+/* Buttons */
+.btn {
+  border-radius: var(--border-radius-sm);
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  transition: var(--transition);
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+.btn-secondary {
+  background-color: var(--gray-500);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: var(--gray-600);
+}
+
+/* Cards - Minimalist */
+.card, .car-card, .car-item-card {
+  background-color: white !important;
+  border: 1px solid var(--gray-200) !important;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  margin-bottom: 1.5rem;
+}
+
+.card:hover, .car-card:hover, .car-item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .card-title {
-  font-weight: bold !important;
+  color: var(--primary);
+  font-weight: 700;
 }
 
-/* Ensure buttons have readable text */
-.btn {
-  text-shadow: none !important;
-  opacity: 1 !important;
+/* Car Grids */
+.car-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
 }
 
-/* Fix navigation links */
-a {
-  cursor: pointer !important;
-  opacity: 1 !important;
+/* Tables - Clean & SaaS Style */
+.table {
+  background: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 
-/* Card styling for better visibility */
-.card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 20px;
+.table thead th {
+  background-color: var(--gray-100);
+  color: var(--primary);
+  font-weight: 700;
+  border-bottom: 2px solid var(--gray-200);
+  padding: 1rem;
 }
 
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.table tbody td {
+  padding: 1rem;
+  vertical-align: middle;
 }
 
-/* Override any theme styles that might be causing fading */
-.card-body {
-  opacity: 1 !important;
-  color: #333 !important;
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #fafbfc;
 }
 
-/* Ensure proper contrast for card backgrounds */
-.card .card-body {
-  background-color: #fff !important;
+/* Forms */
+.form-control {
+  border-radius: var(--border-radius-sm);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--gray-300);
+  color: var(--text-color);
 }
 
-/* Specific styles for the sell page */
-.sell-container {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+.form-control:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
-button:hover {
-  background-color: #28a745 !important;
-  transition: background-color 0.3s ease;
-}
-h1, h2, h3, h4, h5, h6 {
-  color: #333 !important; /* Ensure text color is set */
-  text-shadow: none !important; /* Remove text shadow */
-}
-h1.mb-1 {
-  color: #333 !important;
-  text-shadow: none !important;
+/* Dashboard Cards */
+.stat-card {
+  padding: 1.5rem;
+  border-left: 4px solid var(--secondary);
 }
 
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.stat-label {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+/* Animations */
+.animate__animated {
+  animation-duration: 0.5s;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+}

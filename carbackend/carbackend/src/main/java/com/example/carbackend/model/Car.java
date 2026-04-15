@@ -33,6 +33,7 @@ public class Car {
     private String fuelType;
     private String transmission;
     private String color;
+    private String bodyType;
     private String description;
 
     // Store features as a comma-separated string
@@ -45,6 +46,8 @@ public class Car {
     private String image;
     private String contactPhone;
     private String contactEmail;
+    
+    private boolean availability = true;
     
     // Custom getter and setter for image to ensure proper URL handling
     public String getImage() {

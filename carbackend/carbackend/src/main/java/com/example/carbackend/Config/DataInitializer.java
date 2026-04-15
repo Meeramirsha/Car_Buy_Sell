@@ -1,27 +1,39 @@
 package com.example.carbackend.Config;
 
 import com.example.carbackend.model.Car;
+import com.example.carbackend.model.User;
 import com.example.carbackend.repository.CarRepository;
+import com.example.carbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Component
+@SuppressWarnings("all")
 public class DataInitializer implements CommandLineRunner {
 
     private final CarRepository carRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public DataInitializer(CarRepository carRepository) {
+    public DataInitializer(CarRepository carRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.carRepository = carRepository;
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void run(String... args) {
-        // Only initialize if the database is empty
+        // 1. Initialize Default Users (Check by email to be safe)
+        initializeUser("admin@smartcar.com", "admin123", "SmartCar Admin", "ADMIN");
+        initializeUser("mirishmeeru@gmail.com", "password123", "Meera", "USER");
+
+        // 2. Initialize Cars
         if (carRepository.count() == 0) {
             // Create cars with proper initialization
             Car car1 = new Car();
@@ -35,7 +47,7 @@ public class DataInitializer implements CommandLineRunner {
             car1.setColor("Silver");
             car1.setDescription("This Toyota Corolla is in excellent condition with low mileage.");
             car1.setFeatures(Arrays.asList("Bluetooth", "Backup Camera", "Lane Departure Warning"));
-            car1.setImage("https://images.unsplash.com/photo-1590362891991-f776e747a588");
+            car1.setImage("https://images.unsplash.com/photo-1590362891991-f776e747a558");
             car1.setContactPhone("(555) 123-4567");
             car1.setContactEmail("seller1@example.com");
             
@@ -69,9 +81,23 @@ public class DataInitializer implements CommandLineRunner {
             car3.setContactPhone("(555) 345-6789");
             car3.setContactEmail("seller3@example.com");
             
-            List<Car> initialCars = Arrays.asList(car1, car2, car3);
+            carRepository.saveAll(List.of(car1, car2, car3));
+            System.out.println("Default cars initialized.");
+        }
+    }
 
-            carRepository.saveAll(initialCars);
+    private void initializeUser(String email, String password, String name, String role) {
+        if (!userRepository.existsByEmail(email)) {
+            User user = User.builder()
+                    .name(name)
+                    .email(email)
+                    .password(passwordEncoder.encode(password))
+                    .role(role)
+                    .build();
+            userRepository.save(user);
+            System.out.println("Initialized account: " + email);
+        } else {
+            System.out.println("Account already exists: " + email);
         }
     }
 }

@@ -1,330 +1,399 @@
-<div class="container-fluid p-0">
-  <!-- Hero Section with Carousel -->
-  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=600&q=80" class="d-block w-100" alt="Luxury Cars">
-        <div class="carousel-caption d-none d-md-block">
-          <h1 class="neon-text-primary animate-fadeInUp">Find Your Dream Car</h1>
-          <p class="animate-fadeInUp delay-1">Thousands of quality vehicles at competitive prices</p>
-          <a routerLink="/buy" class="btn btn-primary btn-lg me-2 animate-fadeInUp delay-2">Browse Cars</a>
-          <a routerLink="/sell" class="btn btn-success btn-lg animate-fadeInUp delay-3">Sell Your Car</a>
+<!-- 1. Hero Section -->
+<div class="hero-section bg-white border-bottom position-relative">
+  <div class="container py-2">
+    <div class="row align-items-center mb-5"> <!-- Removed min-vh-75 for more controlled spacing -->
+      <div class="col-lg-6 mb-5 mb-lg-0 animate__animated animate__fadeInLeft">
+        <h1 class="display-3 fw-bold mb-4">Premium Mobility,<br><span class="text-primary">Simplified</span></h1>
+        <p class="lead text-muted mb-5 pe-lg-5">Discover a seamless way to rent or sell top-quality vehicles with transparent pricing. Explore our professional marketplace today.</p>
+        
+        <div class="d-flex gap-3 mt-4 mb-5"> <!-- Added mb-5 to prevent overlap with search bar -->
+          <a routerLink="/buy" class="btn btn-primary btn-lg shadow-sm px-5 py-3">Explore Buy Options</a>
+          <a (click)="scrollToElement('sell-section')" class="btn btn-outline-primary btn-lg px-5 py-3">Sell Your Car</a>
         </div>
       </div>
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=600&q=80" class="d-block w-100" alt="Sports Car">
-        <div class="carousel-caption d-none d-md-block">
-          <h1 class="neon-text-secondary animate-fadeInUp">Premium Selection</h1>
-          <p class="animate-fadeInUp delay-1">From luxury sedans to rugged SUVs - we have it all</p>
-          <a routerLink="/cars" class="btn btn-primary btn-lg animate-fadeInUp delay-2 neon-pulse">View All Cars</a>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=600&q=80" class="d-block w-100" alt="Car Dealership">
-        <div class="carousel-caption d-none d-md-block">
-          <h1 class="neon-text-accent animate-fadeInUp">Sell With Confidence</h1>
-          <p class="animate-fadeInUp delay-1">Reach thousands of potential buyers with our platform</p>
-          <a routerLink="/sell" class="btn btn-success btn-lg animate-fadeInUp delay-2">List Your Car</a>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-
-  <div class="container mt-5">
-    <!-- Welcome Section -->
-    <div class="row mb-5">
-      <div class="col-lg-6 animate-fadeInUp">
-        <h2 class="display-4 mb-4 neon-text-primary">Welcome to Our Car Platform</h2>
-        <p class="lead">The ultimate destination for buying and selling vehicles online.</p>
-        <div class="tech-data">
-          <div class="tech-data-header">PLATFORM SPECS</div>
-          <div>• Thousands of verified listings</div>
-          <div>• Advanced search algorithms</div>
-          <div>• Secure payment processing</div>
-          <div>• Real-time notifications</div>
-        </div>
-        <p>Our platform connects car enthusiasts, first-time buyers, and sellers in a secure and user-friendly environment. Whether you're looking for a family SUV, a luxury sedan, or a vintage classic, we've got you covered.</p>
-        <p>With thousands of listings updated daily, advanced search filters, and verified sellers, finding your perfect car has never been easier.</p>
-        <div class="mt-4">
-          <a routerLink="/buy" class="btn btn-outline-primary me-2 neon-pulse">Start Browsing</a>
-          <a routerLink="/sell" class="btn btn-outline-success">List Your Car</a>
-        </div>
-      </div>
-      <div class="col-lg-6 animate-fadeInUp delay-2">
-        <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" class="img-fluid rounded shadow-lg" alt="Car Showroom">
-      </div>
-    </div>
-
-    <!-- Main Options Cards -->
-    <div class="row mb-5">
-      <div class="col-md-6 col-lg-3 mb-4">
-        <div class="card h-100 shadow-sm border-0 rounded-3 hover-card">
-          <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" class="card-img-top" alt="Luxury Car">
-          <div class="card-body text-center">
-            <div class="icon-wrapper mb-3">
-              <i class="bi bi-car-front fs-1 text-primary"></i>
-            </div>
-            <h4 class="card-title">Buy Cars</h4>
-            <p class="card-text">Find your perfect match from thousands of listings. Filter by make, model, price, and more.</p>
-            <a routerLink="/buy" class="btn btn-primary mt-2">Browse Cars</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 mb-4">
-        <div class="card h-100 shadow-sm border-0 rounded-3 hover-card">
-          <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" class="card-img-top" alt="Car for Sale">
-          <div class="card-body text-center">
-            <div class="icon-wrapper mb-3">
-              <i class="bi bi-tag-fill fs-1 text-success"></i>
-            </div>
-            <h4 class="card-title">Sell Cars</h4>
-            <p class="card-text">List your vehicle and reach thousands of potential buyers quickly and securely.</p>
-            <a routerLink="/sell" class="btn btn-success mt-2">Sell Your Car</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 mb-4">
-        <div class="card h-100 shadow-sm border-0 rounded-3 hover-card">
-          <img src="https://images.unsplash.com/photo-1551135049-8a33b5883817?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" class="card-img-top" alt="Car Financing">
-          <div class="card-body text-center">
-            <div class="icon-wrapper mb-3">
-              <i class="bi bi-calculator fs-1 text-warning"></i>
-            </div>
-            <h4 class="card-title">Financing</h4>
-            <p class="card-text">We offer competitive financing rates starting at 2.9% APR with flexible terms from 24-72 months.</p>
-            <button (click)="goToFinancing()" class="btn btn-warning mt-2 clickable">Calculate Payment</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 mb-4">
-        <div class="card h-100 shadow-sm border-0 rounded-3 hover-card">
-          <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" class="card-img-top" alt="Car Support">
-          <div class="card-body text-center">
-            <div class="icon-wrapper mb-3">
-              <i class="bi bi-headset fs-1 text-info"></i>
-            </div>
-            <h4 class="card-title">Support</h4>
-            <p class="card-text">Get expert help with buying, selling, or any questions about our platform from our dedicated team.</p>
-            <a routerLink="/help" class="btn btn-info mt-2">Get Help</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  
-    <!-- Featured Cars Section -->
-    <div class="tech-bg py-5">
-      <h2 class="text-center display-5 mt-5 mb-4 neon-text-primary">Featured Cars</h2>
-      <p class="text-center mb-5">Discover our handpicked selection of premium vehicles</p>
-      <div class="row">
-        <div class="col-md-4 mb-4 animate-fadeInUp" *ngFor="let car of featuredCars; let i = index" [ngClass]="'delay-' + (i+1)">
-          <div class="card shadow hover-card">
-            <div class="position-relative">
-              <img [src]="car.image" class="card-img-top car-img" alt="Car Image">
-              <span class="position-absolute top-0 end-0 badge bg-primary m-2 neon-pulse">Featured</span>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title neon-text-primary">{{ car.make }} {{ car.model }}</h5>
-              <p class="card-text mb-1">Year: {{ car.year }}</p>
-              <p class="card-text neon-text-accent fw-bold fs-4">${{ car.price }}</p>
-              <div class="d-flex justify-content-between align-items-center mt-3">
-                <div>
-                  <span class="badge bg-light text-dark me-1"><i class="bi bi-speedometer2"></i> {{ car.mileage || '25,000' }} mi</span>
-                  <span class="badge bg-light text-dark"><i class="bi bi-fuel-pump"></i> {{ car.fuelType || 'Gasoline' }}</span>
-                </div>
-                <a [routerLink]="['/cars']" [queryParams]="{id: car.id}" class="btn btn-sm btn-outline-primary">View Details</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-3 mb-5">
-        <a routerLink="/cars" class="btn btn-outline-primary neon-pulse">View All Cars</a>
-      </div>
-    </div>
-    
-    <!-- Reviews Section -->
-    <div id="reviews" class="row mt-5 mb-5 py-5 rounded-3 testimonials-bg">
-      <div class="col-12 text-center mb-4">
-        <h2 class="display-5 neon-text-secondary reviews-heading">★ Customer Reviews ★</h2>
-        <p class="reviews-description">See what our satisfied customers have to say about their experience</p>
-        <div class="d-flex justify-content-center mb-4">
-          <div class="bg-light px-4 py-2 rounded-pill">
-            <span class="fs-4">
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star-half text-warning"></i>
-              <span class="ms-2 text-dark">4.8/5 from 2,300+ reviews</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4 animate-fadeInUp">
-        <div class="testimonial-card h-100">
-          <div class="card-body">
-            <div class="d-flex mb-3">
-              <i class="bi bi-star-fill text-warning me-1"></i>
-              <i class="bi bi-star-fill text-warning me-1"></i>
-              <i class="bi bi-star-fill text-warning me-1"></i>
-              <i class="bi bi-star-fill text-warning me-1"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-            </div>
-            <p class="card-text">"I found my dream car within a week of searching. The filters made it so easy to narrow down exactly what I wanted. Highly recommend!"</p>
-            <div class="d-flex align-items-center mt-3">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="50" height="50" alt="Customer">
-              <div>
-                <h6 class="mb-0 neon-text-primary">Michael Johnson</h6>
-                <small>Bought a BMW 3 Series</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4 animate-fadeInUp delay-1">
-        <div class="testimonial-card h-100">
-          <div class="card-body">
-            <div class="d-flex mb-3">
-              <i class="bi bi-star-fill text-warning me-1"></i>
-              <i class="bi bi-star-fill text-warning me-1"></i>
-              <i class="bi bi-star-fill text-warning me-1"></i>
-              <i class="bi bi-star-fill text-warning me-1"></i>
-              <i class="bi bi-star-half text-warning"></i>
-            </div>
-            <p class="card-text">"Selling my car was a breeze. I had multiple offers within days and the secure payment system gave me peace of mind throughout the process."</p>
-            <div class="d-flex align-items-center mt-3">
-              <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle me-3" width="50" height="50" alt="Customer">
-              <div>
-                <h6 class="mb-0 neon-text-primary">Sarah Williams</h6>
-                <small>Sold a Toyota Camry</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4 animate-fadeInUp delay-2">
-        <div class="testimonial-card h-100">
-          <div class="card-body">
-            <div class="d-flex mb-3">
-              <i class="bi bi-star-fill text-warning me-1"></i>
-              <i class="bi bi-star-fill text-warning me-1"></i>
-              <i class="bi bi-star-fill text-warning me-1"></i>
-              <i class="bi bi-star-fill text-warning me-1"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-            </div>
-            <p class="card-text">"The customer service was exceptional. When I had questions about a listing, the team responded quickly and helped me make an informed decision."</p>
-            <div class="d-flex align-items-center mt-3">
-              <img src="https://randomuser.me/api/portraits/men/67.jpg" class="rounded-circle me-3" width="50" height="50" alt="Customer">
-              <div>
-                <h6 class="mb-0 neon-text-primary">David Thompson</h6>
-                <small>Bought a Honda CR-V</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <!-- Why Choose Us Section -->
-    <div class="row mt-5 mb-5 tech-bg py-5">
-      <div class="col-12 text-center mb-4">
-        <h2 class="display-5 neon-text-primary">Why Choose Our Platform</h2>
-        <p class="mb-5">We're committed to providing the best car buying and selling experience</p>
-      </div>
-      <div class="col-md-3 mb-4 animate-fadeInUp">
-        <div class="card border-0 text-center h-100 hover-card">
-          <div class="card-body">
-            <div class="icon-circle bg-primary text-white mb-4 mx-auto neon-pulse">
-              <i class="bi bi-shield-check fs-3"></i>
-            </div>
-            <h4 class="neon-text-primary">Trusted Sellers</h4>
-            <p>All our sellers are verified for your peace of mind and security.</p>
-            <div class="tech-data mt-3">
-              <div>• Identity verification</div>
-              <div>• Secure transactions</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4 animate-fadeInUp delay-1">
-        <div class="card border-0 text-center h-100 hover-card">
-          <div class="card-body">
-            <div class="icon-circle bg-success text-white mb-4 mx-auto">
-              <i class="bi bi-currency-dollar fs-3"></i>
-            </div>
-            <h4 class="neon-text-success">Best Prices</h4>
-            <p>Competitive pricing with no hidden fees or surprise charges.</p>
-            <div class="tech-data mt-3">
-              <div>• Market analysis</div>
-              <div>• Price comparison</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4 animate-fadeInUp delay-2">
-        <div class="card border-0 text-center h-100 hover-card">
-          <div class="card-body">
-            <div class="icon-circle bg-info text-white mb-4 mx-auto">
-              <i class="bi bi-search fs-3"></i>
-            </div>
-            <h4 class="neon-text-info">Easy Search</h4>
-            <p>Find exactly what you're looking for with our advanced filters.</p>
-            <div class="tech-data mt-3">
-              <div>• AI-powered search</div>
-              <div>• Custom filters</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4 animate-fadeInUp delay-3">
-        <div class="card border-0 text-center h-100 hover-card">
-          <div class="card-body">
-            <div class="icon-circle bg-warning text-white mb-4 mx-auto">
-              <i class="bi bi-headset fs-3"></i>
-            </div>
-            <h4 class="neon-text-warning">24/7 Support</h4>
-            <p>Our dedicated team is always ready to assist you with any questions.</p>
-            <div class="tech-data mt-3">
-              <div>• Live chat support</div>
-              <div>• Quick response time</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Call to Action -->
-    <div class="row mt-5 mb-5">
-      <div class="col-12 animate-fadeInUp">
-        <div class="p-5 rounded-3 text-center cta-container">
-          <h2 class="display-5 mb-3 neon-text-primary">Ready to Find Your Perfect Car?</h2>
-          <p class="lead mb-4">Join thousands of satisfied customers who found their dream cars on our platform</p>
-          <div class="tech-data mb-4">
-            <div class="tech-data-header">SYSTEM READY</div>
-            <div class="d-flex justify-content-between">
-              <span>SEARCH ENGINE: <span class="neon-text-accent">ONLINE</span></span>
-              <span>LISTINGS: <span class="neon-text-accent">UPDATED</span></span>
-              <span>SECURE PAYMENT: <span class="neon-text-accent">ACTIVE</span></span>
-            </div>
-          </div>
-          <a routerLink="/buy" class="btn btn-primary btn-lg me-2 neon-pulse">Browse Cars</a>
-          <a routerLink="/sell" class="btn btn-outline-success btn-lg">Sell Your Car</a>
+      <div class="col-lg-6 animate__animated animate__fadeInRight">
+        <div class="hero-image-wrapper rounded-4 overflow-hidden shadow-lg border">
+          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70" alt="Premium Classic Car" class="img-fluid w-100 object-fit-cover" style="min-height: 450px;">
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- 2. Search Filters -->
+<div class="container search-container">
+  <div class="search-filter-card bg-white shadow-lg p-4 rounded-4 border">
+    <form (ngSubmit)="onSearch()" class="row g-3 align-items-end">
+      <div class="col-md-3">
+        <label class="form-label small fw-bold text-muted">What are you looking for?</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light border-0"><i class="bi bi-search"></i></span>
+          <input type="text" class="form-control bg-light border-0" [(ngModel)]="searchQuery.make" name="make" placeholder="Search Make/Model">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label small fw-bold text-muted">Body Type</label>
+        <select class="form-select bg-light border-0" [(ngModel)]="searchQuery.bodyType" name="bodyType">
+          <option value="">All Regions</option>
+          <option *ngFor="let bt of bodyTypes" [value]="bt.name">{{ bt.name }}</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label small fw-bold text-muted">Max Budget (₹)</label>
+        <select class="form-select bg-light border-0" [(ngModel)]="searchQuery.budget" name="budget">
+          <option value="">Any Budget</option>
+          <option value="5000">Below ₹5,000</option>
+          <option value="10000">Below ₹10,000</option>
+          <option value="20000">Below ₹20,000</option>
+          <option value="50000">Below ₹50,000</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-primary w-100 py-2 shadow-sm">
+          <i class="bi bi-sliders me-2"></i> Find My Car
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Filtered Results Section (Dynamic) -->
+<section id="filtered-results" *ngIf="showFilteredResults" class="py-5 bg-white">
+  <div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+      <h2 class="fw-bold mb-0 text-primary">{{ filterTitle }}</h2>
+      <button class="btn btn-outline-secondary btn-sm rounded-pill" (click)="showFilteredResults = false">Clear Results</button>
+    </div>
+    <div class="row g-4" *ngIf="filteredHeroCars.length > 0; else noResults">
+      <div class="col-md-6 col-lg-3" *ngFor="let car of filteredHeroCars">
+        <div class="car-card h-100">
+          <div class="position-relative overflow-hidden">
+            <img [src]="getSafeImageUrl(car.image)" class="img-fluid w-100 car-img-top" [alt]="car.make">
+            <span class="badge bg-primary position-absolute top-0 end-0 m-3 shadow-sm">{{ car.bodyType || 'Rental' }}</span>
+          </div>
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bold mb-1">{{ car.make }}</h5>
+            <p class="text-muted small mb-3">{{ car.model }} • {{ car.fuelType }}</p>
+            <div class="h5 mb-3 fw-bold text-primary">₹{{ car.price }}<span class="fs-6 text-muted fw-normal">/day</span></div>
+            <a [routerLink]="['/booking', car.id]" class="btn btn-primary w-100 rounded-3">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noResults>
+      <div class="text-center py-5">
+        <i class="bi bi-search fs-1 text-muted mb-3 d-block"></i>
+        <p class="text-muted italic">We couldn't find any cars matching your criteria. Try adjusting the filters!</p>
+      </div>
+    </ng-template>
+  </div>
+</section>
+
+<!-- 3rd Screenshot: Sell Your Car Section (NOW SECOND MAJOR SECTION) -->
+<section id="sell-section" class="py-5 bg-white mb-5">
+  <div class="container py-5">
+    <div class="row align-items-center bg-primary text-white rounded-5 p-5 shadow-lg mx-0 position-relative overflow-hidden">
+        <!-- Abstract Decoration -->
+        <div class="position-absolute translate-middle-y opacity-10 end-0" style="font-size: 300px; transform: rotate(15deg) translateX(50px);">
+            <i class="bi bi-currency-rupee"></i>
+        </div>
+        
+        <div class="col-lg-6 position-relative z-1">
+            <h2 class="display-5 fw-bold mb-4">Ready to <span class="text-warning">Sell Your Car?</span></h2>
+            <p class="lead mb-5 opacity-90">Get the best market value with our instant appraisal tool. We handle all the paperwork while you sit back and relax.</p>
+            <div class="row g-4 mb-5">
+                <div class="col-6">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-shield-check fs-2 me-3"></i>
+                        <span class="fw-bold">Safe & Secure</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-lightning-charge fs-2 me-3"></i>
+                        <span class="fw-bold">Instant Payout</span>
+                    </div>
+                </div>
+            </div>
+            <a routerLink="/sell" class="btn btn-warning btn-lg px-5 py-3 fw-bold text-dark shadow-sm">List Your Car Today</a>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block">
+            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=800" class="img-fluid rounded-4 shadow-sm" alt="Selling Car">
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI Recommended Cars Section -->
+<section id="ai-recommendations" class="py-5 bg-white border-top">
+  <div class="container py-5 px-4 px-md-5 bg-light-soft rounded-5 shadow-sm border">
+    <div class="row align-items-center mb-5 pt-3">
+      <div class="col-lg-6">
+        <h2 class="fw-bold h1"><span class="text-primary"><i class="bi bi-stars me-2"></i>AI</span> Recommended</h2>
+        <p class="text-muted mb-0">Smartly selected vehicles curated just for you based on current trends.</p>
+      </div>
+      <div class="col-lg-6 text-lg-end mt-4 mt-lg-0">
+        <button (click)="togglePrefModal()" class="btn btn-primary rounded-pill px-4 py-2">
+            <i class="bi bi-sliders me-2"></i> Update Preferences
+        </button>
+      </div>
+    </div>
+    
+    <div class="row g-4 pb-3" *ngIf="recommendedCars.length > 0; else noRecommendations">
+      <div class="col-md-4" *ngFor="let car of recommendedCars">
+        <div class="car-card h-100 bg-white border shadow-sm position-relative">
+          <!-- Wishlist Heart Icon -->
+          <button (click)="toggleWishlist(car); $event.stopPropagation()" class="btn btn-link position-absolute top-0 end-0 p-3 z-index-10 text-decoration-none" style="z-index: 5;">
+            <i class="bi" [ngClass]="isWishlisted(car.id) ? 'bi-heart-fill text-danger' : 'bi-heart text-white'" style="text-shadow: 0 0 5px rgba(0,0,0,0.5);"></i>
+          </button>
+          
+          <div class="position-relative overflow-hidden">
+            <!-- Compare Checkbox -->
+            <div class="position-absolute top-0 start-0 p-3 z-index-10" style="left: auto; right: 0; padding-top: 50px !important;">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="isCarSelected(car.id)" (change)="toggleComparison(car)">
+                </div>
+            </div>
+            <img [src]="getSafeImageUrl(car.image)" class="img-fluid w-100 car-img-top" [alt]="car.make">
+            <div class="ai-match-badge position-absolute top-0 start-0 m-3 px-3 py-1 bg-white text-primary rounded-pill shadow-sm small fw-bold">
+              <i class="bi bi-heart-fill me-1"></i> {{ car.aiScore }}% Match
+            </div>
+          </div>
+          <div class="card-body p-4">
+            <h5 class="fw-bold mb-1">{{ car.make }} {{ car.model }}</h5>
+            <p class="text-muted small mb-3">Premium Choice • Reliable Performance</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="h5 mb-0 fw-bold text-primary">₹{{ car.price }}</div>
+                <button [routerLink]="['/booking', car.id]" class="btn btn-outline-primary btn-sm rounded-pill px-3">Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Explore by Body Type -->
+<section class="py-5 bg-white border-top">
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold h1 mb-2">Explore by Body Type</h2>
+      <p class="text-muted">Find the perfect automobile that matches your lifestyle</p>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-6 col-md-4 col-lg-2" *ngFor="let body of bodyTypes">
+        <div class="category-card" (click)="filterByBodyType(body.name)">
+          <div class="category-image-wrapper mb-3 overflow-hidden rounded-4 shadow-sm border">
+            <img [src]="getSafeImageUrl(body.image)" (error)="onImageError($event)" class="img-fluid w-100 object-fit-cover" style="height: 120px;" [alt]="body.name">
+          </div>
+          <h6 class="fw-bold mb-0">{{ body.name }}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Popular Brands Section -->
+<section class="py-5 bg-light-soft border-top">
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold h1">Popular Brands</h2>
+      <p class="text-muted">Direct partnerships with global manufacturers</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-3" *ngFor="let brand of popularBrands; let i = index">
+        <div class="brand-card bg-white shadow-xs border-0" (click)="filterByBrand(brand.name)">
+          <div class="brand-logo-container mb-3">
+             <img [src]="getSafeImageUrl(brand.logo)" (error)="onImageError($event)" class="img-fluid object-fit-contain" style="height: 40px; width: 60px;" [alt]="brand.name">
+          </div>
+          <h6 class="fw-bold mb-1">{{ brand.name }}</h6>
+          <p class="text-muted small mb-0">{{ brand.cars }} Available</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Cars Section -->
+<section class="py-5 bg-white border-top">
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold h1 mb-2">Featured Listings</h2>
+      <p class="text-muted">The best current offerings from across our network</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3" *ngFor="let car of featuredCars; let i = index">
+        <div class="car-card h-100 border shadow-xs position-relative">
+          <!-- Wishlist Heart Icon -->
+          <button (click)="toggleWishlist(car); $event.stopPropagation()" class="btn btn-link position-absolute top-0 end-0 p-3 z-index-10 text-decoration-none" style="z-index: 5;">
+            <i class="bi" [ngClass]="isWishlisted(car.id) ? 'bi-heart-fill text-danger' : 'bi-heart text-white'" style="text-shadow: 0 0 5px rgba(0,0,0,0.5);"></i>
+          </button>
+          
+          <div class="position-relative overflow-hidden">
+            <!-- Compare Checkbox -->
+            <div class="position-absolute top-0 start-0 p-3 z-index-10">
+              <div class="form-check">
+                <input class="form-check-input border-white" type="checkbox" [checked]="isCarSelected(car.id)" (change)="toggleComparison(car)">
+              </div>
+            </div>
+            <img [src]="getSafeImageUrl(car.image)" class="img-fluid w-100 car-img-top" [alt]="car.make">
+            <div class="position-absolute bottom-0 start-0 p-3 w-100 bg-gradient-dark text-white">
+              <small class="fw-bold opacity-75">{{ car.year }} Model</small>
+            </div>
+          </div>
+          <div class="card-body p-4">
+            <h5 class="fw-bold mb-1 text-truncate">{{ car.make }} {{ car.model }}</h5>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <span class="text-muted small"><i class="bi bi-fuel-pump me-1"></i>{{ car.fuelType }}</span>
+              <div class="h5 mb-0 fw-bold text-primary">₹{{ car.price }}<span class="fs-6 text-muted fw-normal">/day</span></div>
+            </div>
+            <a [routerLink]="['/booking', car.id]" class="btn btn-primary w-100 py-2 rounded-3">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq-section" class="py-5 bg-white border-top">
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold h1">Frequently Asked Questions</h2>
+      <p class="text-muted">Everything you need to know about our services</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="accordion accordion-flush" id="faqAccordion">
+          <div class="accordion-item bg-light-soft mb-3 rounded-4 border-0" *ngFor="let faq of [
+            {id: 'One', q: 'What documents are required to rent a car?', a: 'You need a valid Driving License, Aadhar Card/Passport, and a credit/debit card for the security deposit.'},
+            {id: 'Two', q: 'Is there a limit on kilometers?', a: 'We offer both limited and unlimited kilometer plans. Choose the one that fits your journey.'},
+            {id: 'Three', q: 'Can I cancel my booking?', a: 'Yes, you can cancel your booking up to 24 hours before the pick-up time for a full refund.'},
+            {id: 'Four', q: 'How do I sell my car on SmartCar?', a: 'Simply click on Sell Car, fill in your car details, and our experts will contact you for a valuation.'}
+          ]">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+faq.id">
+                {{ faq.q }}
+              </button>
+            </h2>
+            <div [id]="'collapse'+faq.id" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body text-muted pt-0">{{ faq.a }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Help Center Section -->
+<section class="py-5 bg-white border-top">
+  <div class="container py-5">
+    <div class="help-center-card shadow-sm rounded-5 p-5 border bg-white position-relative">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+            <div class="d-flex align-items-center mb-4">
+                <div class="bg-primary-light rounded-circle p-3 me-3">
+                    <i class="bi bi-headset text-primary fs-2"></i>
+                </div>
+                <div>
+                    <h2 class="fw-bold mb-0">SmartCar Help Center</h2>
+                    <p class="text-muted mb-0">Our support team is available 24/7</p>
+                </div>
+            </div>
+          <div class="row g-4 mt-2">
+            <div class="col-md-6 col-lg-4">
+              <h6 class="fw-bold mb-3 text-primary">Contact Us</h6>
+              <p class="small text-muted mb-2"><i class="bi bi-envelope me-2 text-primary"></i>support&#64;smartcar.com</p>
+              <p class="small text-muted"><i class="bi bi-phone me-2 text-primary"></i>+91 98765 43210</p>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <h6 class="fw-bold mb-3 text-primary">Self Service</h6>
+              <ul class="list-unstyled small text-muted">
+                <li class="mb-2"><a (click)="scrollToSection('filtered-results')" class="text-decoration-none text-muted cursor-pointer hover-link">Track Booking</a></li>
+                <li class="mb-2"><a class="text-decoration-none text-muted">Refund Policies</a></li>
+                <li><a class="text-decoration-none text-muted">Terms of Service</a></li>
+              </ul>
+            </div>
+            <div class="col-md-12 col-lg-4 d-flex align-items-center">
+              <button class="btn btn-primary px-5 py-3 rounded-pill shadow-sm w-100">Talk to an Expert</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 d-none d-lg-block text-center text-primary opacity-10">
+          <i class="bi bi-question-circle" style="font-size: 180px;"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section (Professional Touch) -->
+<section class="py-5 bg-dark text-white mt-5">
+  <div class="container py-4">
+    <div class="row g-4 text-center">
+      <div class="col-md-4">
+        <h1 class="fw-bold text-primary mb-0">500+</h1>
+        <p class="mb-0 text-white-50 small text-uppercase tracking-wider">Cars Available</p>
+      </div>
+      <div class="col-md-4">
+        <h1 class="fw-bold text-primary mb-0">10,000+</h1>
+        <p class="mb-0 text-white-50 small text-uppercase tracking-wider">Happy Customers</p>
+      </div>
+      <div class="col-md-4">
+        <h1 class="fw-bold text-primary mb-0">1,200+</h1>
+        <p class="mb-0 text-white-50 small text-uppercase tracking-wider">Monthly Bookings</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floating Compare Button -->
+<div class="position-fixed bottom-0 start-0 m-4 shadow-lg text-white" *ngIf="comparisonCount > 0" style="z-index: 1050;">
+    <button (click)="goToComparison()" class="btn btn-dark rounded-pill shadow-lg px-4 py-3 border-primary border-2 fw-bold">
+        <i class="bi bi-arrow-left-right me-2"></i> Compare ({{ comparisonCount }}/2)
+    </button>
+</div>
+
+<!-- Recommendation Preferences Modal (Simple Overlay) -->
+<div class="modal fade show d-block" *ngIf="showPrefModal" style="background: rgba(0,0,0,0.5); z-index: 2000;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4 p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-bold mb-0">What are you looking for?</h4>
+                <button (click)="togglePrefModal()" class="btn-close"></button>
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-bold small text-muted text-uppercase">Monthly Budget</label>
+                <input type="number" class="form-control border-0 bg-light-soft" [(ngModel)]="userPreferences.budget" placeholder="Max Price in ₹">
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-bold small text-muted text-uppercase">Family Size</label>
+                <select class="form-select border-0 bg-light-soft" [(ngModel)]="userPreferences.familySize">
+                    <option [ngValue]="1">1-2 People (Solo/Couple)</option>
+                    <option [ngValue]="4">3-4 People (Small Family)</option>
+                    <option [ngValue]="5">5+ People (Large Family)</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="form-label fw-bold small text-muted text-uppercase">Fuel Preference</label>
+                <select class="form-select border-0 bg-light-soft" [(ngModel)]="userPreferences.fuel">
+                    <option value="">Any</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Electric">Electric</option>
+                </select>
+            </div>
+            <button (click)="applyRecommendations()" class="btn btn-primary w-100 py-3 rounded-pill fw-bold">
+                See Smart Suggestions
+            </button>
+        </div>
+    </div>
+</div>
+
+<ng-template #noRecommendations>
+    <div class="col-12 py-5 text-center">
+        <i class="bi bi-search display-4 text-muted opacity-25"></i>
+        <h5 class="mt-3 text-muted">No specific matches found. Try broadening your preferences!</h5>
+    </div>
+</ng-template>

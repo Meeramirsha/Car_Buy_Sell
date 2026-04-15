@@ -1,0 +1,72 @@
+<div class="container py-5">
+    <div class="row mb-5">
+      <div class="col-lg-8">
+        <h1 class="fw-bold text-primary mb-1">Fleet Management</h1>
+        <p class="text-muted">Overview of your car rental business and fleet operations.</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <button class="btn btn-outline-primary" routerLink="/">Exit Admin Control</button>
+      </div>
+    </div>
+  
+    <!-- Operational Stats -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="card stat-card shadow-sm border-0">
+          <div class="stat-label">Total Cars</div>
+          <div class="stat-value">24</div>
+          <div class="progress mt-2" style="height: 4px;">
+            <div class="progress-bar bg-primary" style="width: 75%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card stat-card shadow-sm border-0" style="border-left-color: #27ae60 !important;">
+          <div class="stat-label">Total Bookings</div>
+          <div class="stat-value">158</div>
+          <div class="progress mt-2" style="height: 4px;">
+            <div class="progress-bar bg-success" style="width: 60%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card stat-card shadow-sm border-0" style="border-left-color: #f39c12 !important;">
+          <div class="stat-label">Revenue (Estimated)</div>
+          <div class="stat-value">$12,450</div>
+          <div class="progress mt-2" style="height: 4px;">
+            <div class="progress-bar bg-warning" style="width: 85%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- View Switcher -->
+    <div class="card border-0 shadow-sm mb-4">
+      <div class="card-body p-0">
+        <ul class="nav nav-tabs nav-justified border-0">
+          <li class="nav-item">
+            <button class="nav-link py-3 border-0 rounded-0" [class.active]="activeTab === 'cars'" [class.fw-bold]="activeTab === 'cars'" (click)="setActiveTab('cars')">
+              <i class="bi bi-car-front me-2"></i>Manage Inventory
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link py-3 border-0 rounded-0" [class.active]="activeTab === 'bookings'" [class.fw-bold]="activeTab === 'bookings'" (click)="setActiveTab('bookings')">
+              <i class="bi bi-calendar-check me-2"></i>Global Bookings
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link py-3 border-0 rounded-0" [class.active]="activeTab === 'sell-requests'" [class.fw-bold]="activeTab === 'sell-requests'" (click)="setActiveTab('sell-requests')">
+              <i class="bi bi-car-front me-2"></i>Sell Requests
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <!-- Content Area -->
+    <div class="animate__animated animate__fadeIn">
+      <app-manage-cars *ngIf="activeTab === 'cars'"></app-manage-cars>
+      <app-manage-bookings *ngIf="activeTab === 'bookings'"></app-manage-bookings>
+      <app-manage-sell-requests *ngIf="activeTab === 'sell-requests'"></app-manage-sell-requests>
+    </div>
+  </div>

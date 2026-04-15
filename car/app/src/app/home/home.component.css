@@ -1,214 +1,191 @@
-/* Inherit original styles */
-@import './home.page.css';
+/* Home Component Styles - Professional Redesign Expansion */
 
-/* Home component specific styles to override neon effects */
-
-/* Override neon text effects for better readability */
-:host {
-  display: block;
+:root {
+  --primary: #0d6efd;
+  --primary-light: #e7f1ff;
+  --secondary: #6c757d;
+  --bg-light: #f8f9fa;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Make all text readable */
-:host h1, :host h2, :host h3, :host h4, :host h5, :host h6, :host .card-title {
-  color: #ffffff !important;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8) !important;
-  font-weight: normal;
-  opacity: 1 !important; /* Ensure all text is fully opaque */
+/* 1. Hero Section */
+.hero-section {
+  padding: 40px 0 100px; /* Reduced top padding to fix gap */
+  overflow: hidden;
+  background: white;
+  position: relative;
 }
 
-/* Make paragraph text darker and more visible */
-:host p, :host .card-text, :host .lead {
-  color: #000000 !important; /* Black text for maximum contrast */
-  text-shadow: none !important;
-  font-weight: 500 !important; /* Medium weight for better visibility */
-  opacity: 1 !important; /* Ensure all text is fully opaque */
-  background-color: rgba(255, 255, 255, 0.8) !important; /* Light background for contrast */
-  padding: 5px !important;
-  border-radius: 3px !important;
+.hero-image-wrapper {
+  transition: var(--transition);
 }
 
-/* Special styling for headings */
-:host h1.neon-text-primary, 
-:host h2.neon-text-primary, 
-:host h2.display-4, 
-:host h2.display-5 {
-  color: #00f3ff !important;
-  text-shadow: 0 0 5px rgba(0, 243, 255, 0.5) !important;
-  font-weight: bold;
+.hero-image-wrapper:hover {
+  transform: scale(1.01);
 }
 
-:host h1.neon-text-secondary, 
-:host h2.neon-text-secondary {
-  color: #ff00e6 !important;
-  text-shadow: 0 0 5px rgba(255, 0, 230, 0.5) !important;
-  font-weight: bold;
+/* 2. Search Bar */
+.search-container {
+  margin-top: -50px; /* Controlled overlap */
+  margin-bottom: 80px;
+  z-index: 10;
+  position: relative;
 }
 
-:host h1.neon-text-accent, 
-:host h2.neon-text-accent {
-  color: #00ff8f !important;
-  text-shadow: 0 0 5px rgba(0, 255, 143, 0.5) !important;
-  font-weight: bold;
+.search-filter-card {
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0,0,0,0.05) !important;
 }
 
-/* Card text */
-:host .card {
-  background-color: #1a1a2e !important;
+.search-filter-card:hover {
+  box-shadow: 0 1.5rem 4rem rgba(0,0,0,0.12) !important;
+  transform: translateY(-2px);
 }
 
-:host .card-title {
-  color: #00f3ff !important;
-  font-weight: bold;
-  text-shadow: 0 0 3px rgba(0, 243, 255, 0.5) !important;
-}
-
-:host .card-text {
-  color: #000000 !important;
-  text-shadow: none !important;
-  background-color: rgba(255, 255, 255, 0.8) !important;
-  padding: 5px !important;
-  border-radius: 3px !important;
-  font-weight: 500 !important;
-}
-
-/* Button styling */
-:host .btn-primary {
-  background-color: #0056b3 !important;
-  border-color: #0056b3 !important;
-  color: white !important;
-  box-shadow: 0 0 5px rgba(0, 86, 179, 0.5) !important;
-}
-
-:host .btn-success {
-  background-color: #28a745 !important;
-  border-color: #28a745 !important;
-  color: white !important;
-  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5) !important;
-}
-
-:host .btn-warning {
-  background-color: #ffc107 !important;
-  border-color: #ffc107 !important;
-  color: #212529 !important;
-  box-shadow: 0 0 5px rgba(255, 193, 7, 0.5) !important;
-}
-
-:host .btn-danger {
-  background-color: #dc3545 !important;
-  border-color: #dc3545 !important;
-  color: white !important;
-  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5) !important;
-}
-
-:host .btn-outline-primary {
-  color: #0056b3 !important;
-  border-color: #0056b3 !important;
-  background-color: transparent !important;
-}
-
-:host .btn-outline-primary:hover {
-  background-color: #0056b3 !important;
-  color: white !important;
-}
-
-:host .btn-outline-success {
-  color: #28a745 !important;
-  border-color: #28a745 !important;
-  background-color: transparent !important;
-}
-
-:host .btn-outline-success:hover {
-  background-color: #28a745 !important;
-  color: white !important;
-}
-
-/* Badge styling */
-:host .badge {
-  font-weight: normal !important;
-  box-shadow: none !important;
-}
-
-/* Carousel caption */
-:host .carousel-caption {
-  background-color: rgba(0, 0, 0, 0.6) !important;
-  border-radius: 8px !important;
-  padding: 20px !important;
-}
-
-:host .carousel-caption h1 {
-  font-size: 2.5rem !important;
-  margin-bottom: 1rem !important;
-}
-
-:host .carousel-caption p {
-  font-size: 1.2rem !important;
-  margin-bottom: 1.5rem !important;
-  color: #ffffff !important;
-  text-shadow: 0 0 3px #000000 !important;
-  font-weight: bold !important;
-  background-color: rgba(0, 0, 0, 0.6) !important;
-  padding: 5px 10px !important;
-  border-radius: 5px !important;
-  display: inline-block !important;
-}
-
-/* Icon styling */
-:host .icon-circle {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
-}
-
-/* Testimonial cards */
-:host .testimonial-card {
-  background-color: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
-}
-
-:host .testimonial-card h6 {
-  color: #0056b3 !important;
-  font-weight: bold !important;
-}
-
-:host .testimonial-card small {
-  color: #333333 !important;
-  font-weight: 500 !important;
-}
-
-:host .testimonial-card p {
-  color: #000000 !important;
-  background-color: transparent !important;
-  padding: 0 !important;
-}
-
-/* Reviews section */
-:host .reviews-heading {
-  font-size: 3rem !important;
-  margin-bottom: 1.5rem !important;
-}
-
-:host .reviews-description {
-  font-size: 1.2rem !important;
-  margin-bottom: 2rem !important;
-}
-
-/* Tech data section */
-:host .tech-data {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  border-left: 3px solid #0056b3 !important;
-  color: #000000 !important;
-}
-
-:host .tech-data-header {
-  color: #0056b3 !important;
-  font-weight: bold !important;
-}
-
-:host .tech-data div {
-  color: #000000 !important;
-  font-weight: 500 !important;
-}
-
-/* Clickable elements */
-:host .clickable {
+/* 3. Category Cards (Body Type) */
+.category-card {
+  background: white;
+  text-align: center;
+  transition: var(--transition);
   cursor: pointer;
+  padding: 10px;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card:hover h6 {
+  color: var(--primary);
+}
+
+.category-image-wrapper {
+  transition: var(--transition);
+  border: 1px solid #eee;
+}
+
+.category-card:hover .category-image-wrapper {
+  border-color: var(--primary);
+  box-shadow: 0 8px 15px rgba(13, 110, 253, 0.1);
+}
+
+/* 4. Brand Cards */
+.brand-card {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.brand-card:hover {
+  background: var(--primary-light);
+  transform: translateY(-3px);
+}
+
+.brand-logo-container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: grayscale(1);
+  transition: var(--transition);
+  opacity: 0.7;
+}
+
+.brand-card:hover .brand-logo-container {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+/* 5. Car Cards */
+.car-card {
+  border-radius: 16px;
+  overflow: hidden;
+  transition: var(--transition);
+  border: 1px solid #f0f0f0;
+  background: white;
+}
+
+.car-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+.car-img-top {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.car-card:hover .car-img-top {
+  transform: scale(1.05);
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+}
+
+/* 6. AI Match Badge */
+.ai-match-badge {
+  border: 1px solid var(--primary-light);
+  z-index: 2;
+}
+
+/* 7. Sell Section Decorations */
+.bg-primary-light {
+  background-color: var(--primary-light);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.hover-link:hover {
+  color: var(--primary) !important;
+  text-decoration: underline !important;
+}
+
+/* Form Styling (Sync with Existing Theme) */
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* 8. FAQ Accordion */
+.accordion-item {
+  transition: var(--transition);
+}
+
+.accordion-button:not(.collapsed) {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+/* 9. Help Center Modernization */
+.help-center-card {
+  transition: var(--transition);
+}
+
+/* Utility Classes */
+.bg-light-soft {
+  background-color: #f9fbff;
+}
+
+.shadow-xs {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.tracking-wider {
+  letter-spacing: 0.1em;
+}
+
+/* Responsive Overrides */
+@media (max-width: 991px) {
+  .search-container {
+    margin-top: 0;
+    transform: none !important;
+  }
 }

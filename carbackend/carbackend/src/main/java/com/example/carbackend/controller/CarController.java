@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import com.example.carbackend.repository.BookingRepository;
 
 @RestController
 @RequestMapping("/api/cars")
@@ -71,14 +72,36 @@ public class CarController {
     }
 
     @GetMapping("/make/{make}")
-    public ResponseEntity<List<Car>> getCarsByMake(@PathVariable String make) {
+    public ResponseEntity<java.util.List<Car>> getCarsByMake(@PathVariable String make) {
         List<Car> cars = carService.getCarsByMake(make);
         return new ResponseEntity<>(cars, HttpStatus.OK);
     }
 
+    @GetMapping("/brand/{brand}")
+    public ResponseEntity<java.util.List<Car>> getCarsByBrand(@PathVariable String brand) {
+        // user requirement uses /brand/{brandName}, mapping to make
+        java.util.List<Car> cars = carService.getCarsByMake(brand);
+        return new ResponseEntity<>(cars, HttpStatus.OK);
+    }
+
+    @GetMapping("/bodytype/{type}")
+    public ResponseEntity<java.util.List<Car>> getCarsByBodyType(@PathVariable String type) {
+        java.util.List<Car> cars = carService.getCarsByBodyType(type);
+        return new ResponseEntity<>(cars, HttpStatus.OK);
+    }
+
     @GetMapping("/price-range/{range}")
-    public ResponseEntity<List<Car>> getCarsByPriceRange(@PathVariable String range) {
+    public ResponseEntity<java.util.List<Car>> getCarsByPriceRange(@PathVariable String range) {
         List<Car> cars = carService.getCarsByPriceRange(range);
         return new ResponseEntity<>(cars, HttpStatus.OK);
+    }
+    
+    @Autowired
+    private BookingRepository bookingRepository;
+
+    @GetMapping("/recommendations/{userId}")
+    public ResponseEntity<java.util.List<Car>> getRecommendedCars(@PathVariable Long userId) {
+        java.util.List<Car> recommendedCars = carService.getRecommendedCars(userId, bookingRepository);
+        return new ResponseEntity<>(recommendedCars, HttpStatus.OK);
     }
 }

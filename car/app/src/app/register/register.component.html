@@ -1,0 +1,58 @@
+<div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card border-0 shadow-lg animate__animated animate__fadeIn">
+          <div class="card-body p-5">
+            <div class="text-center mb-5">
+              <h2 class="fw-bold text-primary">Join SmartCar</h2>
+              <p class="text-muted small">Experience premium mobility with a single account</p>
+            </div>
+            <div *ngIf="error" class="alert alert-danger border-0 small py-2 px-3 mb-4 animate__animated animate__shakeX">
+              <i class="bi bi-exclamation-circle me-2"></i> {{ error }}
+            </div>
+            
+            <div *ngIf="success" class="alert alert-success border-0 small py-2 px-3 mb-4 animate__animated animate__fadeIn">
+              <i class="bi bi-check-circle me-2"></i> {{ success }}
+            </div>
+  
+            <form (ngSubmit)="onRegister()">
+              <div class="row mb-4">
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold text-muted">First Name</label>
+                  <input type="text" class="form-control bg-light border-0" [(ngModel)]="user.firstName" name="firstName" placeholder="John" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold text-muted">Last Name</label>
+                  <input type="text" class="form-control bg-light border-0" [(ngModel)]="user.lastName" name="lastName" placeholder="Doe" required>
+                </div>
+              </div>
+  
+              <div class="mb-4">
+                <label class="form-label small fw-bold text-muted">Email Address</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light border-0"><i class="bi bi-envelope"></i></span>
+                  <input type="email" class="form-control bg-light border-0" [(ngModel)]="user.email" name="email" placeholder="john@example.com" required autocomplete="username">
+                </div>
+              </div>
+  
+              <div class="mb-5">
+                <label class="form-label small fw-bold text-muted">Password</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light border-0"><i class="bi bi-lock"></i></span>
+                  <input type="password" class="form-control bg-light border-0" [(ngModel)]="user.password" name="password" placeholder="••••••••" required autocomplete="new-password">
+                </div>
+                <small class="text-muted smallest mt-1 d-block">Must be at least 8 characters long.</small>
+              </div>
+  
+              <button type="submit" class="btn btn-primary w-100 btn-lg shadow-sm mb-4">Launch Account</button>
+  
+              <div class="text-center">
+                <span class="text-muted small">Already a member?</span>
+                <a routerLink="/login" class="small fw-bold text-primary text-decoration-none ms-1">Sign In instead</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

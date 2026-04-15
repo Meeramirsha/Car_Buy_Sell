@@ -1,210 +1,105 @@
-<div class="container mt-4">
-  <h2 class="text-center text-primary">Available Cars</h2>
+<div class="container py-5">
+    <div class="row mb-5">
+      <div class="col-lg-8">
+        <h1 class="mb-2">Available Vehicles</h1>
+        <p class="text-muted">Choose from our diverse fleet of well-maintained premium cars.</p>
+      </div>
+      <div class="col-lg-4 d-flex align-items-end justify-content-lg-end mt-3 mt-lg-0">
+        <div class="input-group" style="max-width: 300px;">
+          <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+          <input type="text" class="form-control border-start-0" placeholder="Search make or model..." (input)="onSearch($event)">
+        </div>
+      </div>
+    </div>
   
-  <!-- Filter Section -->
-  <div class="row mb-4">
-    <div class="col-md-3">
-      <div class="card shadow-sm p-3 mb-4 bg-white rounded">
-        <div class="card-body">
-          <h5 class="card-title">Filter Options</h5>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <!-- Sidebar Filters -->
+        <div class="card p-4 border-0 shadow-sm sticky-top" style="top: 100px;">
+          <h6 class="fw-bold mb-4">Filters</h6>
           
-          <!-- Price Range Filter -->
-          <div class="mb-3">
-            <label for="priceRangeSelect" class="form-label">Price Range</label>
-            <select id="priceRangeSelect" class="form-select" [(ngModel)]="selectedPriceRange" aria-label="Select price range">
-              <option value="all">All Prices</option>
-              <option value="under15k">Under $15,000</option>
-              <option value="15k-25k">$15,000 - $25,000</option>
-              <option value="over25k">Over $25,000</option>b
+          <div class="mb-4">
+            <label class="form-label small fw-bold text-muted">Car Manufacturer</label>
+            <select class="form-select border-0 bg-light-soft" (change)="filterByMake($event)">
+              <option value="">All Makes</option>
+              <option *ngFor="let make of uniqueMakes" [value]="make">{{ make }}</option>
+            </select>
+          </div>
+  
+          <div class="mb-4">
+            <label class="form-label small fw-bold text-muted">Price Range (Daily)</label>
+            <select class="form-select border-0 bg-light-soft" (change)="filterByPrice($event)">
+              <option value="">All Prices</option>
+              <option value="0-2000">₹0 - ₹2,000</option>
+              <option value="2000-5000">₹2,000 - ₹5,000</option>
+              <option value="5000+">₹5,000+</option>
             </select>
           </div>
           
-          <!-- Make Filter -->
-          <div class="mb-3">
-            <label for="makeSelect" class="form-label">Make</label>
-            <select id="makeSelect" class="form-select" [(ngModel)]="selectedMake" aria-label="Select car make">
-              <option value="all">All Makes</option>
-              <option value="Audi">Audi</option>
-              <option value="BMW">BMW</option>
-              <option value="Chevrolet">Chevrolet</option>
-              <option value="Ford">Ford</option>
-              <option value="Honda">Honda</option>
-              <option value="Hyundai">Hyundai</option>
-              <option value="Mercedes">Mercedes</option>
-              <option value="Nissan">Nissan</option>
-              <option value="Toyota">Toyota</option>
-            </select>
-          </div>
-          
-          <button class="btn btn-primary w-100" (click)="applyFilters()">Apply Filters</button>
+          <button class="btn btn-primary w-100" (click)="resetFilters()">Clear Filters</button>
         </div>
       </div>
-    </div>
-    
-    <!-- Car Listing -->
-    <div class="col-md-9">
-      <div class="row">
-        <div class="col-md-4 mb-4" *ngFor="let car of filteredCars">
-          <div class="card shadow-sm p-3 mb-4 bg-white rounded">
-            <div class="position-relative">
-              <img [src]="car.image" class="card-img-top" alt="Car Image">
-              <button class="btn btn-sm btn-outline-danger position-absolute top-0 end-0 m-2" 
-                      (click)="toggleWishlist(car)" title="Add to Wishlist">
-                <i class="bi" [ngClass]="isInWishlist(car) ? 'bi-heart-fill' : 'bi-heart'"></i>
-              </button>
-            </div>
-            
-            <div class="card-body">
-              <h5 class="card-title">{{ car.make }} {{ car.model }}</h5>
-              <p class="card-text text-muted">${{ car.price }}</p>
-              
-              <div class="d-flex justify-content-between align-items-center">
-                <span class="badge bg-info text-dark">{{ car.year }}</span>
-                <span class="badge bg-secondary">{{ car.mileage }} miles</span>
-              </div>
-              
-              <hr>
-              
-              <div class="d-flex justify-content-between mb-2">
-                <button class="btn btn-sm btn-primary" (click)="viewCarDetails(car)">View Details</button>
-                <button class="btn btn-sm btn-success" (click)="contactSeller(car)">Contact Seller</button>
-              </div>
-              
-              <!-- Edit and Remove Options -->
-              <div class="d-flex justify-content-between">
-                <button class="btn btn-sm btn-outline-secondary flex-grow-1 me-1" (click)="editCar(car)">
-                  <i class="bi bi-pencil-square"></i> Edit
-                </button>
-                <button class="btn btn-sm btn-outline-danger flex-grow-1" (click)="removeCar(car)">
-                  <i class="bi bi-trash"></i> Remove
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   
-  <!-- Car Details Modal -->
-  <div class="modal fade" id="carDetailsModal" tabindex="-1" aria-labelledby="carDetailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content" *ngIf="selectedCar">
-        <div class="modal-header">
-          <h5 class="modal-title" id="carDetailsModalLabel">{{ selectedCar.make }} {{ selectedCar.model }} Details</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6">
-              <img [src]="selectedCar.image" class="img-fluid rounded" alt="Car Image">
-            </div>
-            <div class="col-md-6">
-              <h4>{{ selectedCar.make }} {{ selectedCar.model }} {{ selectedCar.year }}</h4>
-              <h5 class="text-primary">${{ selectedCar.price }}</h5>
-              
-              <div class="mt-3">
-                <h6>Specifications:</h6>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item d-flex justify-content-between">
-                    <span>Mileage:</span>
-                    <span>{{ selectedCar.mileage }} miles</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between">
-                    <span>Fuel Type:</span>
-                    <span>{{ selectedCar.fuelType }}</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between">
-                    <span>Transmission:</span>
-                    <span>{{ selectedCar.transmission }}</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between">
-                    <span>Color:</span>
-                    <span>{{ selectedCar.color }}</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+      <div class="col-md-9">
+        <!-- Recommendation Section if logged in -->
+        <div *ngIf="recommendedCars.length > 0" class="recommendation-banner mb-5 animate__animated animate__fadeIn">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-stars me-2 fs-4 text-warning"></i>
+            <h4 class="mb-0 text-white">Recommended For You</h4>
           </div>
-          
-          <div class="mt-4">
-            <h6>Description:</h6>
-            <p>{{ selectedCar.description }}</p>
-          </div>
-          
-          <div class="mt-3">
-            <h6>Features:</h6>
-            <div class="row">
-              <div class="col-md-6" *ngFor="let feature of selectedCar.features">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check-circle-fill text-success me-2"></i>
-                  <span>{{ feature }}</span>
+          <div class="row g-3">
+            <div class="col-md-4" *ngFor="let car of recommendedCars">
+              <div class="card h-100 border-0 shadow-sm" style="background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(5px);">
+                <div class="p-3">
+                  <h6 class="text-white mb-1">{{ car.make }} {{ car.model }}</h6>
+                  <p class="text-white-50 small mb-2">₹{{ car.price }}/day</p>
+                  <a [routerLink]="['/booking', car.id]" class="btn btn-light btn-sm w-100">Book Now</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="contactSeller(selectedCar)" data-bs-dismiss="modal">Contact Seller</button>
-          <button type="button" class="btn btn-outline-danger" (click)="toggleWishlist(selectedCar)">
-            <i class="bi" [ngClass]="isInWishlist(selectedCar) ? 'bi-heart-fill' : 'bi-heart'"></i>
-            {{ isInWishlist(selectedCar) ? 'Remove from Wishlist' : 'Add to Wishlist' }}
-          </button>
+  
+        <!-- Main Car Grid -->
+        <div class="row g-4" *ngIf="filteredCars.length > 0; else noResults">
+          <div class="col-md-6 col-lg-4" *ngFor="let car of filteredCars; let i = index">
+            <div class="car-item-card h-100 animate__animated animate__fadeInUp" [style.animation-delay]="i * 0.05 + 's'">
+              <div class="car-thumb-wrapper overflow-hidden position-relative">
+                <img [src]="car.image || 'assets/placeholder-car.jpg'" class="car-thumb" [alt]="car.make">
+                <div class="position-absolute top-0 end-0 p-3">
+                  <button class="btn btn-white btn-sm rounded-circle shadow-sm" (click)="toggleWishlist(car)" [class.text-danger]="isInWishlist(car)">
+                    <i class="bi" [ngClass]="isInWishlist(car) ? 'bi-heart-fill' : 'bi-heart'"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="car-title mb-0">{{ car.make }} {{ car.model }}</h5>
+                  <span class="badge bg-light text-dark">{{ car.year }}</span>
+                </div>
+                <div class="d-flex gap-2 text-muted small mb-4">
+                  <span><i class="bi bi-fuel-pump me-1"></i>{{ car.fuelType }}</span>
+                  <span>•</span>
+                  <span><i class="bi bi-gear me-1"></i>Auto</span>
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="rent-price h4 fw-bold mb-0 text-primary">₹{{ car.price }}<span class="fs-6 text-muted fw-normal">/day</span></div>
+                  <a [routerLink]="['/booking', car.id]" class="btn btn-primary px-4 shadow-sm">Book Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+  
+        <ng-template #noResults>
+          <div class="text-center py-5 bg-white rounded shadow-sm">
+            <i class="bi bi-search fs-1 text-muted mb-3 d-block"></i>
+            <h3>No Vehicles Found</h3>
+            <p class="text-muted">Try adjusting your filters or search keywords.</p>
+            <button class="btn btn-outline-primary" (click)="resetFilters()">Clear All Filters</button>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>
-</div>
-
-<!-- Contact Seller Modal -->
-<div class="modal fade" id="contactSellerModal" tabindex="-1" aria-labelledby="contactSellerModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="contactSellerModalLabel">Seller Contact Information</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div *ngIf="selectedCar">
-          <div class="text-center mb-4">
-            <img [src]="selectedCar.image" class="img-fluid rounded mb-3 contact-modal-car-image" alt="Car Image">
-            <h5>{{ selectedCar.make }} {{ selectedCar.model }} ({{ selectedCar.year }})</h5>
-            <p class="text-muted">${{ selectedCar.price }}</p>
-          </div>
-          
-          <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-              <h6 class="mb-0">Seller Contact Details</h6>
-            </div>
-            <div class="card-body">
-              <div class="d-flex align-items-center mb-3">
-                <i class="bi bi-telephone-fill text-primary me-3 fs-4"></i>
-                <div>
-                  <div class="text-muted small">Phone</div>
-                  <div class="fw-bold">{{ selectedCar.contactPhone || '(555) 123-4567' }}</div>
-                </div>
-              </div>
-              <div class="d-flex align-items-center">
-                <i class="bi bi-envelope-fill text-primary me-3 fs-4"></i>
-                <div>
-                  <div class="text-muted small">Email</div>
-                  <div class="fw-bold">{{ selectedCar.contactEmail || 'seller@example.com' }}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="alert alert-info">
-            <i class="bi bi-info-circle-fill me-2"></i>
-            When contacting the seller, please mention that you found this listing on our platform.
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <a *ngIf="selectedCar?.contactEmail" [href]="'mailto:' + selectedCar?.contactEmail + '?subject=Inquiry about ' + selectedCar?.make + ' ' + selectedCar?.model" class="btn btn-primary">Email Seller</a>
-      </div>
-    </div>
-  </div>
-</div>

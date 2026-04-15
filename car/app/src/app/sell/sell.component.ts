@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { CarService } from '../services/car.service';
+import { SellService, SellRequest } from '../services/sell.service';
 
 @Component({
   selector: 'app-sell',
@@ -13,98 +13,80 @@ import { CarService } from '../services/car.service';
   encapsulation: ViewEncapsulation.None
 })
 export class SellComponent {
-  car = {
-    make: '',
+  sellRequest: SellRequest = {
+    ownerName: '',
+    phone: '',
+    brand: '',
     model: '',
-    year: undefined as number | undefined,
-    mileage: undefined as number | undefined,
-    price: undefined as number | undefined,
-    description: '',
-    contactPhone: '',
-    contactEmail: '',
-    color: '',
-    fuelType: 'Gasoline',
-    transmission: 'Automatic',
-    image: '',
-    features: [] as string[]
+    year: new Date().getFullYear(),
+    mileage: 0,
+    fuelType: 'Petrol',
+    expectedPrice: 0,
+    predictedPrice: 0
   };
 
   successMessage = '';
   showSuccess = false;
-  newFeature = '';
+  errorMessage = '';
 
-  constructor(private carService: CarService, private router: Router) {}
+  isPredicting = false;
+
+  constructor(private sellService: SellService, private router: Router) {}
+
+  getPrediction() {
+    if (!this.sellRequest.brand || !this.sellRequest.year || !this.sellRequest.mileage) {
+        this.errorMessage = "Please fill in Brand, Year and Mileage first.";
+        return;
+    }
+
+    this.isPredicting = true;
+    const predictionData = {
+        brand: this.sellRequest.brand,
+        year: this.sellRequest.year,
+        mileage: this.sellRequest.mileage,
+        fuel_type: this.sellRequest.fuelType
+    };
+
+    this.sellService.predictPrice(predictionData).subscribe({
+        next: (res) => {
+            this.sellRequest.predictedPrice = res.predicted_price;
+            this.isPredicting = false;
+            this.errorMessage = '';
+        },
+        error: (err) => {
+            this.errorMessage = "AI Prediction Service currently unavailable.";
+            this.isPredicting = false;
+        }
+    });
+  }
 
   onSubmit() {
-    if (this.validateForm()) {
-      console.log('Submitting car:', this.car);
-      
-      // Add the car to the service
-      this.carService.addCar(this.car);
-      
-      // Show success message
-      this.showSuccess = true;
-      this.successMessage = 'Your car has been listed successfully!';
-      
-      // Reset the form
-      this.resetForm();
-      
-      // Redirect to car list after a delay
-      setTimeout(() => {
-        console.log('Navigating to car list');
-        this.router.navigate(['/cars']);
-      }, 2000);
-    } else {
-      console.log('Form validation failed');
-      alert('Please fill in all required fields');
-    }
-  }
-
-  validateForm(): boolean {
-    // Basic validation
-    return !!(this.car.make && 
-              this.car.model && 
-              this.car.year && 
-              this.car.mileage && 
-              this.car.price && 
-              this.car.description);
-  }
-
-  useDefaultImage() {
-    this.car.image = 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80';
-  }
-  
-  addFeature() {
-    if (this.newFeature.trim()) {
-      if (!this.car.features) {
-        this.car.features = [];
+    this.sellService.submitSellRequest(this.sellRequest).subscribe({
+      next: (res) => {
+        this.showSuccess = true;
+        this.successMessage = 'Your car has been listed for verification successfully!';
+        this.errorMessage = '';
+        this.resetForm();
+        setTimeout(() => this.router.navigate(['/']), 3000);
+      },
+      error: (err) => {
+        this.errorMessage = 'Failed to submit request. Please check your network and try again.';
+        this.showSuccess = false;
       }
-      this.car.features.push(this.newFeature.trim());
-      this.newFeature = '';
-    }
-  }
-  
-  removeFeature(index: number) {
-    if (this.car.features && index >= 0 && index < this.car.features.length) {
-      this.car.features.splice(index, 1);
-    }
+    });
   }
 
   resetForm() {
-    this.car = {
-      make: '',
+    this.sellRequest = {
+      ownerName: '',
+      phone: '',
+      brand: '',
       model: '',
-      year: undefined,
-      mileage: undefined,
-      price: undefined,
-      description: '',
-      contactPhone: '',
-      contactEmail: '',
-      color: '',
-      fuelType: 'Gasoline',
-      transmission: 'Automatic',
-      image: '',
-      features: []
+      year: new Date().getFullYear(),
+      mileage: 0,
+      fuelType: 'Petrol',
+      expectedPrice: 0,
+      predictedPrice: 0
     };
   }
 }

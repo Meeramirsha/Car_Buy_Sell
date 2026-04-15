@@ -13,20 +13,23 @@ export interface Car {
   fuelType?: string;
   transmission?: string;
   color?: string;
+  bodyType?: string;
   description: string;
   features?: string[];
   image?: string;
   contactPhone?: string;
   contactEmail?: string;
+  availability: boolean;
+  aiScore?: number;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
-  private apiUrl = 'http://localhost:8080/api/cars';
+  private apiUrl = 'http://localhost:8081/api/cars';
   private carsSubject = new BehaviorSubject<Car[]>([]);
-  
+
   constructor(private http: HttpClient) {
     this.loadCars();
   }
@@ -128,6 +131,36 @@ export class CarService {
       .pipe(
         catchError(error => {
           console.error(`Error getting cars in price range ${range}:`, error);
+          return of([]);
+        })
+      );
+  }
+
+  getRecommendedCars(userId: number): Observable<Car[]> {
+    return this.http.get<Car[]>(`${this.apiUrl}/recommendations/${userId}`)
+      .pipe(
+        catchError(error => {
+          console.error(`Error getting recommended cars for user ${userId}:`, error);
+          return of([]);
+        })
+      );
+  }
+
+  getCarsByBodyType(type: string): Observable<Car[]> {
+    return this.http.get<Car[]>(`${this.apiUrl}/bodytype/${type}`)
+      .pipe(
+        catchError(error => {
+          console.error(`Error getting cars with body type ${type}:`, error);
+          return of([]);
+        })
+      );
+  }
+
+  getCarsByBrand(brand: string): Observable<Car[]> {
+    return this.http.get<Car[]>(`${this.apiUrl}/brand/${brand}`)
+      .pipe(
+        catchError(error => {
+          console.error(`Error getting cars with brand ${brand}:`, error);
           return of([]);
         })
       );

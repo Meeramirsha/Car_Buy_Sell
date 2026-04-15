@@ -1,0 +1,63 @@
+package com.example.carbackend.controller;
+
+import com.example.carbackend.model.SellRequest;
+import com.example.carbackend.repository.SellRequestRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import java.util.HashMap;
+import java.util.Map;
+
+
+@RestController
+@RequestMapping("/api/sellcar")
+@CrossOrigin(origins = "*")
+@SuppressWarnings("all")
+public class SellRequestController {
+
+    private final SellRequestRepository sellRequestRepository;
+
+    @Autowired
+    public SellRequestController(SellRequestRepository sellRequestRepository) {
+        this.sellRequestRepository = sellRequestRepository;
+    }
+
+    @PostMapping
+    public ResponseEntity<SellRequest> createSellRequest(@RequestBody SellRequest sellRequest) {
+        if (sellRequest.getStatus() == null) sellRequest.setStatus("PENDING");
+        SellRequest savedRequest = sellRequestRepository.save(sellRequest);
+        return new ResponseEntity<>(savedRequest, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/predict")
+    public ResponseEntity<?> predictPrice(@RequestBody Map<String, Object> carDetails) {
+        String aiServiceUrl = "http://localhost:5000/predict-price";
+        RestTemplate restTemplate = new RestTemplate();
+        try {
+            ResponseEntity<Map<String, Object>> response = restTemplate.exchange(
+                aiServiceUrl,
+                HttpMethod.POST,
+                new HttpEntity<>(carDetails),
+                new ParameterizedTypeReference<Map<String, Object>>() {}
+            );
+            return ResponseEntity.ok(response.getBody());
+        } catch (Exception e) {
+            // Fallback if AI service is down
+            Map<String, Object> fallback = new HashMap<>();
+            fallback.put("predicted_price", 0);
+            fallback.put("error", "AI Service unavailable");
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(fallback);
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity<java.util.List<SellRequest>> getAllSellRequests() {
+        return new ResponseEntity<>(sellRequestRepository.findAll(), HttpStatus.OK);
+    }
+}
