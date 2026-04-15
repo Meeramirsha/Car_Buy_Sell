@@ -1,8 +1,19 @@
 # Ignore frontend build & modules
 car/node_modules/
 car/dist/
+car/app/dist/
+car/app/node_modules/
 
 # Ignore backend build & IDE files
 carbackend/target/
 carbackend/.idea/
 carbackend/*.iml
+carbackend/carbackend/target/
+carbackend/carbackend/.idea/
+carbackend/carbackend/*.iml
+
+# Environment and Secrets
+.env
+.env.*
+application-local.properties
+*.log
