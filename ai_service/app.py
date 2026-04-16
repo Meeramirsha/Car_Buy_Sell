@@ -30,6 +30,10 @@ FUEL_MAP = {
     'Electric': 2
 }
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({'status': 'online', 'message': 'Car Price Prediction API is Live!'}), 200
+
 @app.route('/predict-price', methods=['POST'])
 def predict():
     if model is None:

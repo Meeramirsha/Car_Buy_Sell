@@ -63,9 +63,12 @@ public class SellRequestController {
             
             return ResponseEntity.ok(response.getBody());
         } catch (Exception e) {
-            System.err.println("AI Service Error: " + e.getMessage());
+            System.err.println("CRITICAL: AI Service Communication Failed!");
+            System.err.println("Target URL: " + aiServiceUrl);
+            System.err.println("Error Type: " + e.getClass().getName());
+            System.err.println("Error Message: " + e.getMessage());
             e.printStackTrace();
-            
+
             // Fallback if AI service is down
             Map<String, Object> fallback = new HashMap<>();
             fallback.put("predicted_price", 0);
