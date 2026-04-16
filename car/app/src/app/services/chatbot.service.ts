@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ChatbotService {
-  private apiUrl = 'http://localhost:8081/api/chatbot';
+  private apiUrl = 'https://car-buy-sell-2.onrender.com/api/chatbot';
 
   constructor(private http: HttpClient) { }
 

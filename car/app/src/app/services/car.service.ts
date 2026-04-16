@@ -27,7 +27,7 @@ export interface Car {
   providedIn: 'root'
 })
 export class CarService {
-  private apiUrl = 'http://localhost:8081/api/cars';
+  private apiUrl = 'https://car-buy-sell-2.onrender.com/api/cars';
   private carsSubject = new BehaviorSubject<Car[]>([]);
 
   constructor(private http: HttpClient) {

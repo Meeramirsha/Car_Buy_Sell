@@ -18,7 +18,7 @@ export interface VerifyPaymentRequest {
   providedIn: 'root'
 })
 export class PaymentService {
-  private apiUrl = 'http://localhost:8081/api/payments';
+  private apiUrl = 'https://car-buy-sell-2.onrender.com/api/payments';
 
   constructor(private http: HttpClient) { }
 

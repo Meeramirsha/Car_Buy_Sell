@@ -16,7 +16,7 @@ export interface Booking {
   providedIn: 'root'
 })
 export class BookingService {
-  private apiUrl = 'http://localhost:8081/api/bookings';
+  private apiUrl = 'https://car-buy-sell-2.onrender.com/api/bookings';
 
   constructor(private http: HttpClient) { }
 

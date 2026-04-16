@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8081/api/auth';
+  private apiUrl = 'https://car-buy-sell-2.onrender.com/api/auth';
 
   private loggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
   public isLoggedIn$ = this.loggedInSubject.asObservable();

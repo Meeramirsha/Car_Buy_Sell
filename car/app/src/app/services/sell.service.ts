@@ -20,7 +20,7 @@ export interface SellRequest {
   providedIn: 'root'
 })
 export class SellService {
-  private apiUrl = 'http://localhost:8081/api/sellcar';
+  private apiUrl = 'https://car-buy-sell-2.onrender.com/api/sellcar';
 
   constructor(private http: HttpClient) { }
 

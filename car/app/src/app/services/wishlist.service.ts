@@ -7,7 +7,7 @@ import { Car } from './car.service';
   providedIn: 'root'
 })
 export class WishlistService {
-  private apiUrl = 'http://localhost:8081/api/wishlist';
+  private apiUrl = 'https://car-buy-sell-2.onrender.com/api/wishlist';
 
   constructor(private http: HttpClient) { }
 

@@ -37,7 +37,7 @@ public class SellRequestController {
 
     @PostMapping("/predict")
     public ResponseEntity<?> predictPrice(@RequestBody Map<String, Object> carDetails) {
-        String aiServiceUrl = "http://localhost:5000/predict-price";
+        String aiServiceUrl = System.getenv("AI_SERVICE_URL") != null ? System.getenv("AI_SERVICE_URL") : "https://car-buy-sell-1.onrender.com/predict-price";
         RestTemplate restTemplate = new RestTemplate();
         try {
             ResponseEntity<Map<String, Object>> response = restTemplate.exchange(

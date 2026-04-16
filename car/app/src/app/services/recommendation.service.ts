@@ -7,7 +7,7 @@ import { Car } from './car.service';
   providedIn: 'root'
 })
 export class RecommendationService {
-  private apiUrl = 'http://localhost:8081/api/recommendations';
+  private apiUrl = 'https://car-buy-sell-2.onrender.com/api/recommendations';
 
   constructor(private http: HttpClient) { }
 
