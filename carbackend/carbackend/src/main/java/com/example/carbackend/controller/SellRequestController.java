@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +39,17 @@ public class SellRequestController {
     @PostMapping("/predict")
     public ResponseEntity<?> predictPrice(@RequestBody Map<String, Object> carDetails) {
         String aiServiceUrl = System.getenv("AI_SERVICE_URL") != null ? System.getenv("AI_SERVICE_URL") : "https://car-buy-sell-1.onrender.com/predict-price";
-        RestTemplate restTemplate = new RestTemplate();
+        
+        System.out.println("--- AI Price Prediction Request ---");
+        System.out.println("Calling URL: " + aiServiceUrl);
+        System.out.println("Request data: " + carDetails);
+
+        // Configure timeout (60 seconds) to handle AI Service cold starts on Render
+        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
+        factory.setConnectTimeout(60000);
+        factory.setReadTimeout(60000);
+        
+        RestTemplate restTemplate = new RestTemplate(factory);
         try {
             ResponseEntity<Map<String, Object>> response = restTemplate.exchange(
                 aiServiceUrl,
@@ -46,12 +57,19 @@ public class SellRequestController {
                 new HttpEntity<>(carDetails),
                 new ParameterizedTypeReference<Map<String, Object>>() {}
             );
+            
+            System.out.println("AI Service Response Status: " + response.getStatusCode());
+            System.out.println("AI Service Response Body: " + response.getBody());
+            
             return ResponseEntity.ok(response.getBody());
         } catch (Exception e) {
+            System.err.println("AI Service Error: " + e.getMessage());
+            e.printStackTrace();
+            
             // Fallback if AI service is down
             Map<String, Object> fallback = new HashMap<>();
             fallback.put("predicted_price", 0);
-            fallback.put("error", "AI Service unavailable");
+            fallback.put("error", "AI Service unavailable: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(fallback);
         }
     }
