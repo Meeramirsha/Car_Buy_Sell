@@ -10,4 +10,5 @@ FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8081
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Optimize memory for Render's 512MB limit
+ENTRYPOINT ["java", "-Xmx350M", "-Xss512k", "-XX:ReservedCodeCacheSize=64M", "-XX:MaxMetaspaceSize=100M", "-jar", "app.jar"]
