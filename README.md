@@ -16,7 +16,14 @@
 ## 🔗 Live Links
 
 - **🔴 Live Demo:** [Click Here to View Live Project](https://car-buy-sell-kappa.vercel.app)
-- **🎥 Demo Video:** ![Watch Project Walkthrough](assets/car_buy_sell_demo.webp)
+- **🎥 Demo Video:** [Watch Project Walkthrough](assets/demo.webp)
+
+---
+
+## 🎥 Project Demo
+<p align="center">
+  <img src="assets/demo.webp" alt="Project Demo Video" width="800">
+</p>
 
 ---
 
