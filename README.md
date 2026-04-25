@@ -20,7 +20,7 @@
 
 ## 🎥 Project Demo
 <p align="center">
-  <img src="assets/demo.webp" alt="Project Demo Video" width="800">
+  <img src="assets/demo_full.webp" alt="Project Demo Video" width="800">
 </p>
 
 ---
