@@ -7,13 +7,7 @@ A comprehensive full-stack web application designed to facilitate the buying and
 
 ---
 
-## 📸 Screenshots
 
-![Homepage](assets/homepage.png)
-![Car Details](assets/car-details.png)
-![Car1 Details](assets/car1.png)
-
----
 
 ## 🧱 Tech Stack
 
