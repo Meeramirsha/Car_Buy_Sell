@@ -2,8 +2,8 @@
 
 A comprehensive full-stack web application designed to facilitate the buying and selling of cars online. This platform provides a seamless user experience for browsing available vehicles, viewing detailed car information, and managing listings.
 
-**[🔴 Live Demo Link](#) | [🎥 Watch Demo Video](#)**
-*(Note: Please update these links with your actual URLs)*
+**[🎥 Watch Demo Video](#)**
+*(Note: Please update this link with your actual video URL)*
 
 ---
 
